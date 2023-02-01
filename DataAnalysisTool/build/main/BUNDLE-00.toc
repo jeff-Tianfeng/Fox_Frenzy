@@ -1,0 +1,3 @@
+([('main',
+   '/Users/zhaotianfeng/Desktop/fox/KL2CSoundNew/DataAnalysisTool/dist/main',
+   'EXECUTABLE')],)

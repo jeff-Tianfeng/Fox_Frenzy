@@ -1,0 +1,190 @@
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
+
+/// <summary>
+/// Handles the behaviour of the foxes
+/// </summary>
+public class FoxBehaviour : MonoBehaviour
+{
+    public GameController gameController;
+
+    // Fox States:
+    // Buried - underground, not moving
+    // PoppingUp - in the process of popping out of the ground, in motion
+    // Resting - above ground, not moving
+    private enum State { Buried, PoppingUp, Resting }
+
+    private State currentState = State.Buried;
+
+    [SerializeField]
+    private float popUpRadius = 6;
+    [SerializeField]
+    private float burrowedYPos = -1f;
+    [SerializeField]
+    private float poppedUpYPos = 0.1f;
+    [SerializeField]
+    private float timeToPopUp = 2;
+    [SerializeField]
+    private float timeToRunAway = 10;
+    /// <summary>
+    /// The maximum angle between the look direction and the fox which will cause the fox to pop up
+    /// </summary>
+    [SerializeField]
+    private float maximumViewAngleToPopUp = 30;
+
+    public bool collected = false;
+
+    private float timer = 0;
+
+    private float distanceToPlayer = 100;
+
+    private void Awake()
+    {
+        //set initial fox y position
+        FoxDown();
+    }
+
+    private void Start()
+    {
+        //start logging
+        gameController.StartNewSearch();
+    }
+
+    private void Update()
+    {
+        distanceToPlayer = gameController.GetPlayerDistanceToFox();
+        //decide behaviour based on distance to player and current state
+        StairingPrompt();
+        FoxPopPrompt();
+    }
+    /// <summary>
+    /// When player close to the fox, tell players stairing at the fox for a while.
+    /// <summary>
+    private void StairingPrompt(){
+        //Debug.Log(distanceToPlayer);
+        if(distanceToPlayer < popUpRadius && currentState == State.Buried){
+            timer += Time.deltaTime; 
+            Title.Instance.Show("Stairing at where the fox may appear!", "Stay still");
+        }
+    }
+    /// <summary>
+    /// When player stairing at fox for 3 sceonds then fox pop up.
+    /// <summary>
+    private void FoxPopPrompt(){
+        if (distanceToPlayer < popUpRadius && currentState == State.Buried && timer >=3)
+        //&& currentState == State.Buried && isPlayerLookingAtFox()
+        {
+            StartCoroutine(PopUp());
+
+            TurnTowards(gameController.GetPlayerPosition());
+            Title.Instance.Show("You found a fox!", "", 60, 30);
+            gameController.FoxPoppedUp();
+            timer = 0;
+        }else if (distanceToPlayer > popUpRadius){
+            FoxDown();
+            gameController.EndSearch();
+            currentState = State.Buried;//reset the state.
+        }
+    }
+    /// <summary>
+    /// Make fox y position down the ground.
+    /// <summary>
+    public void FoxDown(){
+        transform.position = SetYComponent(transform.position, burrowedYPos);
+    }
+
+    /// <summary>
+    /// Makes the fox face towards the post position.
+    /// </summary>
+    private void TurnTowards(Vector3 postPosition)
+    {
+        Vector3 foxToPlayer = postPosition - transform.position;
+        foxToPlayer.y = 0;
+
+        float angle = Vector3.Angle(foxToPlayer, transform.forward);
+        transform.rotation = Quaternion.Euler(0, angle, 0);
+    }
+
+    private void OnTriggerEnter()
+    {
+        OnCollected();
+    }
+
+    /// <summary>
+    /// Called when the collectable is collected
+    /// </summary>
+    private void OnCollected()
+    {
+        //collectable has been collected
+        gameController.FoxCollected();
+    }
+
+    /// <summary>
+    /// Triggers the collectable to pop up out of the ground
+    /// <para>This function is a coroutine function, so should only be called via StartCoroutine</para>
+    /// </summary>
+    private IEnumerator PopUp()
+    {
+        
+        currentState = State.PoppingUp;
+        yield return MoveToPositionOverTime(SetYComponent(transform.position, poppedUpYPos), timeToPopUp);
+        TurnTowards(new Vector3(0,0,0));
+        yield return MoveToPositionOverTime(SetYComponent(new Vector3(0,0,0), poppedUpYPos),timeToRunAway);
+        currentState = State.Resting;
+    }
+
+    /// <summary>
+    /// Linearly interpolates the transform from the current position to a new position over time.
+    /// <para>This function is a coroutine function, so should only be called via StartCoroutine</para>
+    /// <para>Solution taken from: http://answers.unity.com/answers/1146981/view.html </para>
+    /// </summary>
+    /// <param name="pos">The position to move to</param>
+    /// <param name="time">How long to take to move to the new position</param>
+    /// <returns></returns>
+    private IEnumerator MoveToPositionOverTime(Vector3 pos, float time)
+    {
+        float elapsedTime = 0;
+        Vector3 startingPos = this.transform.position;
+        while (elapsedTime < time)
+        {
+            transform.position = Vector3.Lerp(startingPos, pos, (elapsedTime / time));
+            elapsedTime += Time.deltaTime;
+            //Debug.Log(elapsedTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = pos;
+    }
+
+    /// <summary>
+    /// Sets the y component of the vector to the value given
+    /// </summary>
+    /// <param name="vec">The vector to update</param>
+    /// <param name="y">The y component</param>
+    /// <returns></returns>
+    private Vector3 SetYComponent(Vector3 vec, float y)
+    {
+        vec.y = y;
+        return vec;
+    }
+
+    /// <summary>
+    /// Returns true if player is looking at the fox
+    /// </summary>
+    /// <returns></returns>
+    private bool isPlayerLookingAtFox()
+    {
+        return gameController.GetPlayerAngleToFox() < maximumViewAngleToPopUp;
+    }
+
+    public float getDistance(){
+        return distanceToPlayer;
+    }
+
+    public float getAngle(){
+        return gameController.GetPlayerAngleToFox();
+    }
+
+}
