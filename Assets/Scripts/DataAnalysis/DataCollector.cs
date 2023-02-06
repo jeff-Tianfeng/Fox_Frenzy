@@ -5,6 +5,16 @@ using System.IO;
 using System.Text;
 using System;
 
+public class PlayerPerformanceData
+{
+    public string NickName;
+    public string Age;
+    public float[] dataDistanceJS;
+    public float[] dataAngleJS;
+    public int foxCollectCountJS;
+    public int Score;
+}
+
 public class DataCollector : MonoBehaviour
 {   
     [SerializeField]
@@ -13,6 +23,10 @@ public class DataCollector : MonoBehaviour
     public GameController gameController;
     [SerializeField]
     private int countInterval = 50;
+
+    PlayerPerformanceData playerPerformance;
+
+    private string JsonPath;
 
     private static float[] dataDistance = new float[1000];
     private static float[] dataAngle = new float[1000];
@@ -66,6 +80,7 @@ public class DataCollector : MonoBehaviour
                 sb = sb + dataSet[j] + ',';
         Debug.Log(sb);
         FileStream fs;
+
         if(type == 1){
             fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Create);//the file storing path can be changed in here.
         }else{
@@ -81,6 +96,7 @@ public class DataCollector : MonoBehaviour
     /// </summary>
     private void threadBlocker()
     {
+        Debug.Log(gameController.GetTimer());
         if(blockSignal != -1){
             blockSignal = gameController.GetTimer();
         }else{
@@ -90,6 +106,24 @@ public class DataCollector : MonoBehaviour
         if(blockSignal == 2){
             Save(dataDistance,1);
             Save(dataAngle,2);
+
+            playerPerformance = new PlayerPerformanceData();
+            playerPerformance.NickName = "";
+            playerPerformance.Age = "";
+            playerPerformance.dataDistanceJS = dataDistance;
+            playerPerformance.dataAngleJS = dataAngle;
+            playerPerformance.foxCollectCountJS = foxCollectCount;
+            playerPerformance.Score = 0;
+
+
+            JsonPath = Application.streamingAssetsPath + "/JsonTest.json";
+
+            string json = JsonUtility.ToJson(playerPerformance, true);
+            using (StreamWriter sw = new StreamWriter(JsonPath)){
+                sw.WriteLine(json);
+                sw.Close();
+                sw.Dispose();
+        }
             blockSignal = -1;
         }
     }
