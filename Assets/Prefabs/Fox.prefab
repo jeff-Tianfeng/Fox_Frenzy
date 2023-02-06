@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foxBehaviour: {fileID: -2512572573150742420}
-  gameController: {fileID: 0}
+  gameController: {fileID: 310088376689720680, guid: 4b900c8c8586ef14aa6a91a62e6b3a12, type: 3}
   countInterval: 50
 --- !u!95 &5076038131845999572
 Animator:

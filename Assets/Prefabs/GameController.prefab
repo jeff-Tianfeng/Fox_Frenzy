@@ -47,3 +47,5 @@ MonoBehaviour:
   scoreController: {fileID: 0}
   foxHandler: {fileID: 0}
   player: {fileID: 0}
+  countdownDuration: 180
+  foxAngleToReset: 60
