@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Coords
+{
+    public int x;
+    public int y;
+}
+
 /// <summary>
 /// Handles the generation and "ownership" of the current fox
 /// </summary>
@@ -14,6 +20,7 @@ public class FoxHandler : MonoBehaviour
     private GameObject foxInstance;
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
+    private List<Coords> coords= new List<Coords>();
 
     void Start()
     {
@@ -55,6 +62,10 @@ public class FoxHandler : MonoBehaviour
         int zIndex = Random.Range(0,3);
         foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
 
+        Coords temp = new Coords();
+        temp.x = xCoordinate[xIndex];
+        temp.y = zCoordinate[zIndex];
+        coords.Add(temp);
         foxInstance.GetComponent<FoxBehaviour>().gameController = gameController;
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
 
@@ -64,5 +75,9 @@ public class FoxHandler : MonoBehaviour
     {
         if (foxInstance == null) GenerateObject();
         return foxInstance;
+    }
+
+    public List<Coords> GetConstructorList(){
+        return coords;
     }
 }
