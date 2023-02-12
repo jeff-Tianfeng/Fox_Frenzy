@@ -121,15 +121,15 @@ public class DataCollector : MonoBehaviour
             Save(dataAngle,2);
 
             playerPerformance = new PlayerPerformanceData();
-            playerPerformance.NickName = "";
-            playerPerformance.Age = "";
+            playerPerformance.NickName = PlayerPrefs.GetString("NickName");
+            playerPerformance.Age = PlayerPrefs.GetString("Age");
             playerPerformance.dataDistanceJS = dataDistance;
             playerPerformance.dataAngleJS = dataAngle;
             playerPerformance.foxCollectCountJS = foxCollectCount;
             playerPerformance.Score = 0;
 
 
-            JsonPath = Application.streamingAssetsPath + "/JsonTest.json";
+            JsonPath = Application.streamingAssetsPath + "/" + playerPerformance.NickName + "JsonTest.json";
 
             string json = JsonUtility.ToJson(playerPerformance, true);
             using (StreamWriter sw = new StreamWriter(JsonPath)){
