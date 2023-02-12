@@ -206,7 +206,11 @@ public class GameController : MonoBehaviour
 
     public float checkFoxDIviation()
     {
-        Vector3 vecToFox = foxHandler.GetFox().transform.position - player.transform.position;
+        Vector3 vecToFox = new Vector3(0,0,0);
+        if(foxHandler != null)
+        {
+            vecToFox = foxHandler.GetFox().transform.position - player.transform.position;
+        }
         return GetAngleBetween(playerMovement.GetBaseForwardVector(), vecToFox);
     }
 

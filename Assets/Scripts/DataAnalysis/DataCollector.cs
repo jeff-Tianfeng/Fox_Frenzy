@@ -18,6 +18,8 @@ public class PlayerPerformanceData
 public class DataCollector : MonoBehaviour
 {   
     [SerializeField]
+    private MainMenuCollector mainMenuController;
+    [SerializeField]
     private FoxBehaviour foxBehaviour;
     [SerializeField]
     public GameController gameController;
@@ -41,20 +43,26 @@ public class DataCollector : MonoBehaviour
     void Update()
     {   
         //this part is for collecting data into two lists.
-        if(Time.frameCount % countInterval == 0){
-            if(gameController.GetSearchTime() == foxCollectCount){
-                dataDistance[collectTime1] = foxBehaviour.getDistance();
-                dataAngle[collectTime2] = foxBehaviour.getAngle();
-            }else{
-                dataDistance[collectTime1] = -1;//using -1 to divide every run search.
-                dataAngle[collectTime2] = -1;
-                foxCollectCount = gameController.GetSearchTime();//reset the judgement signal.
-            }
+        if(gameController != null)
+        {
+            if(Time.frameCount % countInterval == 0)
+            {
+                if(gameController.GetSearchTime() == foxCollectCount)
+                {
+                    dataDistance[collectTime1] = foxBehaviour.getDistance();
+                    dataAngle[collectTime2] = foxBehaviour.getAngle();
+                }else
+                {
+                    dataDistance[collectTime1] = -1;//using -1 to divide every run search.
+                    dataAngle[collectTime2] = -1;
+                    foxCollectCount = gameController.GetSearchTime();//reset the judgement signal.
+                }
                 collectTime1 = collectTime1 + 1;
                 collectTime2 = collectTime2 + 1;
             }
-        threadBlocker();
-        collectAngleDeviation();
+            threadBlocker();
+            collectAngleDeviation();
+        }
     }
 
     /// <summary>
@@ -62,12 +70,15 @@ public class DataCollector : MonoBehaviour
     /// </summary>
     private void collectAngleDeviation()
     {
-        if(gameController.checkFoxDIviation() >= 30 && blocker == true){
+        if(gameController != null)
+        {
+            if(gameController.checkFoxDIviation() >= 30 && blocker == true){
             deviateTime++;
             blocker = false;
         }
         if(gameController.checkFoxDIviation() < 30){
             blocker = true;
+        }
         }
     }
     /// <summary>
@@ -96,8 +107,10 @@ public class DataCollector : MonoBehaviour
     /// </summary>
     private void threadBlocker()
     {
-        Debug.Log(gameController.GetTimer());
-        if(blockSignal != -1){
+        //Debug.Log(gameController.GetTimer());
+        if(gameController!= null){
+
+            if(blockSignal != -1){
             blockSignal = gameController.GetTimer();
         }else{
             blockSignal = -1;
@@ -126,10 +139,17 @@ public class DataCollector : MonoBehaviour
         }
             blockSignal = -1;
         }
+
+        }
     }
     
     public static int getDeviationTime()
     {
         return deviateTime;
+    }
+
+    public void record(){
+        PlayerPrefs.SetString("NickName", mainMenuController.returnName());
+        PlayerPrefs.SetString("Age", mainMenuController.retrunAge());
     }
 }
