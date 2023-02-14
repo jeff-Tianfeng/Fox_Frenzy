@@ -162,7 +162,7 @@ public class DataCollector : MonoBehaviour
         int length = list.Count;
         for(int i = 0; i<length; i++)
         {
-            playerPerformance.Coords += list[i];
+            playerPerformance.Coords += (list[i].x +", "+ list[i].y);
         }
     }
 }
