@@ -13,6 +13,7 @@ public class PlayerPerformanceData
     public float[] dataAngleJS;
     public int foxCollectCountJS;
     public int Score;
+    public string Coords;
 }
 
 public class DataCollector : MonoBehaviour
@@ -43,7 +44,7 @@ public class DataCollector : MonoBehaviour
     void Update()
     {   
         //this part is for collecting data into two lists.
-        if(gameController != null)
+        if(gameController != null && foxBehaviour != null)
         {
             if(Time.frameCount % countInterval == 0)
             {
@@ -149,7 +150,19 @@ public class DataCollector : MonoBehaviour
     }
 
     public void record(){
-        PlayerPrefs.SetString("NickName", mainMenuController.returnName());
-        PlayerPrefs.SetString("Age", mainMenuController.retrunAge());
+        if(mainMenuController != null)
+        {
+            PlayerPrefs.SetString("NickName", mainMenuController.returnName());
+            PlayerPrefs.SetString("Age", mainMenuController.retrunAge());
+        }
+    }
+
+    public void insertPointInfo(List<Coords> list)
+    {
+        int length = list.Count;
+        for(int i = 0; i<length; i++)
+        {
+            playerPerformance.Coords += list[i];
+        }
     }
 }

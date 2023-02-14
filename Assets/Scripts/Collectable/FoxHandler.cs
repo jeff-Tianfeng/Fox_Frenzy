@@ -16,6 +16,8 @@ public class FoxHandler : MonoBehaviour
     public GameObject collectable;
     public GameObject spawnArea;
     public GameController gameController;
+    
+    public DataCollector dataCollector;
 
     private GameObject foxInstance;
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
@@ -25,6 +27,15 @@ public class FoxHandler : MonoBehaviour
     void Start()
     {
         if (foxInstance == null) GenerateObject();
+    }
+
+    void Update()
+    {
+        Debug.Log(gameController.GetTimer());
+        if(gameController.GetTimer() == 10)
+        {
+            dataCollector.insertPointInfo(coords);
+        }
     }
 
     /// <summary>
@@ -75,9 +86,5 @@ public class FoxHandler : MonoBehaviour
     {
         if (foxInstance == null) GenerateObject();
         return foxInstance;
-    }
-
-    public List<Coords> GetConstructorList(){
-        return coords;
     }
 }
