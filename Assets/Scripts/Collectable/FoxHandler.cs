@@ -23,6 +23,9 @@ public class FoxHandler : MonoBehaviour
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
     private List<Coords> coords= new List<Coords>();
+    private string tempStr;
+
+    private bool coordBlocker = false;
 
     void Start()
     {
@@ -31,10 +34,15 @@ public class FoxHandler : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(gameController.GetTimer());
-        if(gameController.GetTimer() == 10)
+        if(gameController.GetTimer() == 5 && coordBlocker == false)
         {
-            dataCollector.insertPointInfo(coords);
+            int length = coords.Count;
+            for(int i = 0; i<length; i++)
+            {
+                tempStr = tempStr + (coords[i].x + ", " + coords[i].y);
+            }
+            dataCollector.insertPointInfo(tempStr);
+            coordBlocker = true;
         }
     }
 

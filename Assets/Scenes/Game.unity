@@ -3109,7 +3109,7 @@ MonoBehaviour:
   collectable: {fileID: 7176664255988361252, guid: fdf20e33ecb966243bc3af9ff5cd2f08, type: 3}
   spawnArea: {fileID: 2066184483}
   gameController: {fileID: 1440126904}
-  dataCollector: {fileID: 0}
+  dataCollector: {fileID: 352955828}
 --- !u!4 &352955826
 Transform:
   m_ObjectHideFlags: 0

@@ -41,6 +41,10 @@ public class DataCollector : MonoBehaviour
     private static int deviateTime = 0;//total times of deviation.
     private bool blocker = true;//for block the update function, allow one deviation count one a time.
 
+    void Start()
+    {
+        playerPerformance = new PlayerPerformanceData();
+    }
     void Update()
     {   
         //this part is for collecting data into two lists.
@@ -121,7 +125,6 @@ public class DataCollector : MonoBehaviour
             Save(dataDistance,1);
             Save(dataAngle,2);
 
-            playerPerformance = new PlayerPerformanceData();
             playerPerformance.NickName = PlayerPrefs.GetString("NickName");
             playerPerformance.Age = PlayerPrefs.GetString("Age");
             playerPerformance.dataDistanceJS = dataDistance;
@@ -157,12 +160,9 @@ public class DataCollector : MonoBehaviour
         }
     }
 
-    public void insertPointInfo(List<Coords> list)
+    public void insertPointInfo(string list)
     {
-        int length = list.Count;
-        for(int i = 0; i<length; i++)
-        {
-            playerPerformance.Coords += (list[i].x +", "+ list[i].y);
-        }
+        playerPerformance.Coords = list;
+        Debug.Log(list);
     }
 }
