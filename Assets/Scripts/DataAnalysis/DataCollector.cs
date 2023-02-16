@@ -13,7 +13,6 @@ public class PlayerPerformanceData
     public float[] dataAngleJS;
     public int foxCollectCountJS;
     public int Score;
-    public string Coords;
 }
 
 public class DataCollector : MonoBehaviour
@@ -41,9 +40,14 @@ public class DataCollector : MonoBehaviour
     private static int deviateTime = 0;//total times of deviation.
     private bool blocker = true;//for block the update function, allow one deviation count one a time.
 
+    private string coordTemp;
+
     void Start()
     {
-        playerPerformance = new PlayerPerformanceData();
+        if(playerPerformance == null)
+        {
+            playerPerformance = new PlayerPerformanceData();
+        }
     }
     void Update()
     {   
@@ -94,7 +98,6 @@ public class DataCollector : MonoBehaviour
         string  sb = string.Empty;
             for(int j = 0; j<1000; j++)
                 sb = sb + dataSet[j] + ',';
-        Debug.Log(sb);
         FileStream fs;
 
         if(type == 1){
@@ -121,7 +124,7 @@ public class DataCollector : MonoBehaviour
             blockSignal = -1;
         }
     
-        if(blockSignal == 2){
+        if(blockSignal == 170){
             Save(dataDistance,1);
             Save(dataAngle,2);
 
@@ -131,6 +134,8 @@ public class DataCollector : MonoBehaviour
             playerPerformance.dataAngleJS = dataAngle;
             playerPerformance.foxCollectCountJS = foxCollectCount;
             playerPerformance.Score = 0;
+
+            Debug.Log(coordTemp + "DAHUSHISHABI");
 
 
             JsonPath = Application.streamingAssetsPath + "/" + playerPerformance.NickName + "JsonTest.json";
@@ -162,7 +167,6 @@ public class DataCollector : MonoBehaviour
 
     public void insertPointInfo(string list)
     {
-        playerPerformance.Coords = list;
-        Debug.Log(list);
+        coordTemp = list;
     }
 }

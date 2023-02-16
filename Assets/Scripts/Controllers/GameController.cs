@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
     {
         MonitorPlayer();
         IsMissFox();
+        IsFoxToward();
     }
 
     /// <summary>
@@ -123,6 +124,7 @@ public class GameController : MonoBehaviour
             scoreController.Punishment();
         }
     }
+
     /// <summary>
     /// Check if the fox is in player's view angle, if yes return true else return false.
     /// </summary>
@@ -147,6 +149,17 @@ public class GameController : MonoBehaviour
         }else{
             return false;
         }
+    }
+
+    private void IsFoxToward()
+    {
+       if(GetPlayerAngleToFox() <= 20)
+       {
+            Title.Instance.Show("Moving toward", "Fox is infront of you!");
+       }else
+       {
+        Title.Instance.Show("Listen carefully", "locate the fox again!");
+       }
     }
 
     /// <summary>
