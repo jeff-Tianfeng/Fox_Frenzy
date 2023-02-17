@@ -46,6 +46,8 @@ public class GameController : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private bool MsgBlocker = false;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -153,12 +155,14 @@ public class GameController : MonoBehaviour
 
     private void IsFoxToward()
     {
-       if(GetPlayerAngleToFox() <= 20)
+       if(GetPlayerAngleToFox() <= 20 && !MsgBlocker)
        {
             Title.Instance.Show("Moving toward", "Fox is infront of you!");
-       }else
+            MsgBlocker = true;
+       }else if(GetPlayerAngleToFox() > 60 && MsgBlocker)
        {
-        Title.Instance.Show("Listen carefully", "locate the fox again!");
+            Title.Instance.Show("Listen carefully", "locate the fox again!");
+            MsgBlocker = false;
        }
     }
 
