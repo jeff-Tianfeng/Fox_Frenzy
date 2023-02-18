@@ -34,7 +34,7 @@ public class FoxHandler : MonoBehaviour
 
     void Update()
     {
-        if(gameController.GetTimer() == 170 && coordBlocker == false)
+        if(gameController.GetTimer() == 10 && coordBlocker == false)
         {
             int length = coords.Count;
             for(int i = 0; i<length; i++)
