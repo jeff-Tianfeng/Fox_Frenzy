@@ -14,7 +14,6 @@ public class ScreenDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Input.touchCount);
         if (1 == Input.touchCount)
         {
             Touch touch = Input.GetTouch(0);
