@@ -3686,6 +3686,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5899130679092115494, guid: 03d91fd3711bbec448ef139c5a2a5188, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5899130679092115495, guid: 03d91fd3711bbec448ef139c5a2a5188, type: 3}
       propertyPath: m_Name
       value: LockCursor
@@ -5702,6 +5706,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4582525006145958310, guid: c03dfe2023360cf4fbfc5197b59c1566, type: 3}
   m_PrefabInstance: {fileID: 4582525007007084995}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &756567738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756567730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88782a27b4ee0475a8a95ba7bf6523be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &759584671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16127,6 +16143,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582525006145958314, guid: c03dfe2023360cf4fbfc5197b59c1566, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582525007007084997, guid: c03dfe2023360cf4fbfc5197b59c1566, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
