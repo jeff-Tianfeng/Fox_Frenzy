@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
 
         basePosition = transform.position;
+        Debug.Log(basePosition);
         baseRotation = transform.rotation.eulerAngles;
 
         xRotation = transform.rotation.eulerAngles.x;
@@ -48,33 +49,33 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //player movement
-        verticalMovement = Input.GetAxisRaw("Vertical");
-        moveDirection = transform.forward * verticalMovement;
+//         verticalMovement = Input.GetAxisRaw("Vertical");
+//         moveDirection = transform.forward * verticalMovement;
 
-        //player rotation
-        float lookX = Input.GetAxisRaw("Look X");
-        float lookY = 0;
+//         //player rotation
+//         float lookX = Input.GetAxisRaw("Look X");
+//         float lookY = 0;
 
-#if UNITY_EDITOR
-        //enable full mouse controls when in the editor, for ease of testing
-        lookX += Input.GetAxisRaw("Look X Debug");
-        lookY += Input.GetAxisRaw("Look Y Debug");
-#endif
+// #if UNITY_EDITOR
+//         //enable full mouse controls when in the editor, for ease of testing
+//         lookX += Input.GetAxisRaw("Look X Debug");
+//         lookY += Input.GetAxisRaw("Look Y Debug");
+// #endif
 
 
-        yRotation += lookX * lookSensitivity * Time.deltaTime;
-        xRotation -= lookY * lookSensitivity * Time.deltaTime;
+//         yRotation += lookX * lookSensitivity * Time.deltaTime;
+//         xRotation -= lookY * lookSensitivity * Time.deltaTime;
 
-        xRotation = Mathf.Clamp(xRotation, -viewXLimit, viewXLimit);
+//         xRotation = Mathf.Clamp(xRotation, -viewXLimit, viewXLimit);
 
-        if (currentState == LookState.Locked)
-            yRotation = Mathf.Clamp(yRotation, baseRotation.y - viewYLimit, baseRotation.y + viewYLimit);
+//         if (currentState == LookState.Locked)
+//             yRotation = Mathf.Clamp(yRotation, baseRotation.y - viewYLimit, baseRotation.y + viewYLimit);
 
-        // up and down
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+//         // up and down
+//         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
-        // left and right
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+//         // left and right
+//         transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
     private void FixedUpdate()
