@@ -39,7 +39,7 @@ public class FoxHandler : MonoBehaviour
             int length = coords.Count;
             for(int i = 0; i<length; i++)
             {
-                tempStr = tempStr + (coords[i].x + ", " + coords[i].y);
+                tempStr = tempStr + "(" + coords[i].x + "," + coords[i].y + ")" + " ";
             }
             dataCollector.insertPointInfo(tempStr);
             coordBlocker = true;
