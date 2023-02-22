@@ -25,6 +25,8 @@ public class DataCollector : MonoBehaviour
     [SerializeField]
     public GameController gameController;
     [SerializeField]
+    public ScoreController scoreController;
+    [SerializeField]
     private int countInterval = 50;
 
     PlayerPerformanceData playerPerformance;
@@ -134,7 +136,7 @@ public class DataCollector : MonoBehaviour
             playerPerformance.dataDistanceJS = dataDistance;
             playerPerformance.dataAngleJS = dataAngle;
             playerPerformance.foxCollectCountJS = foxCollectCount;
-            playerPerformance.Score = 0;
+            playerPerformance.Score = PlayerPrefs.GetInt("Score");
             playerPerformance.Coords = PlayerPrefs.GetString("Coords");
 
 
@@ -168,5 +170,7 @@ public class DataCollector : MonoBehaviour
     public void insertPointInfo(string list)
     {
         PlayerPrefs.SetString("Coords",list);
+        PlayerPrefs.SetInt("Score",scoreController.returnScore());
+        Debug.Log(scoreController.returnScore() + "dAhu");
     }
 }

@@ -9,6 +9,7 @@ public class ScoreController : MonoBehaviour
     /// The score currently obtained by the player
     /// </summary>
     private static int score = 0;
+    private int scoreNotStatic = 0;
     private int defaultScore = 10;
 
     private void Start()
@@ -31,11 +32,17 @@ public class ScoreController : MonoBehaviour
         }
         GameObject go = Instantiate(cookie);
         go.transform.SetParent(GameObject.Find("ScoreArea").transform);
+        scoreNotStatic = score;
     }
 
     public static int GetScore()
     {
         return score;
+    }
+
+    public int returnScore()
+    {
+        return scoreNotStatic;
     }
 
     public void Punishment(){

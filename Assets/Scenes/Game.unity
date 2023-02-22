@@ -3153,6 +3153,7 @@ MonoBehaviour:
   mainMenuController: {fileID: 0}
   foxBehaviour: {fileID: 0}
   gameController: {fileID: 0}
+  scoreController: {fileID: 233504907}
   countInterval: 50
 --- !u!1 &362272522
 GameObject:
