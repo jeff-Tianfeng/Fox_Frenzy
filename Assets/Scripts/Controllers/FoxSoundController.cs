@@ -17,8 +17,10 @@ public class FoxSoundController : MonoBehaviour
     [SerializeField]
     private ScoreController scoreController;
 
+    private bool isActivate = false;
+
     private float timer = 0;
-    private float delayTime = 6;//the interval between two bell ring.
+    private float delayTime = 3;//the interval between two bell ring.
     private static int soundPlayTimes = 0;//param for cacukating score get intotal.
 
     private void Start(){
@@ -29,8 +31,11 @@ public class FoxSoundController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {   
-        RingAtFoxPosition();
-        checkIfOverTime();
+        if(isActivate)
+        {
+            RingAtFoxPosition();
+            checkIfOverTime();
+        }
     }
 
     /// <summary>
@@ -72,6 +77,11 @@ public class FoxSoundController : MonoBehaviour
     /// </summary>
     public static int returnSoundPlayTime(){
         return soundPlayTimes;
+    }
+
+    public void setIsActivate(bool active)
+    {
+        isActivate = active;
     }
 
 }

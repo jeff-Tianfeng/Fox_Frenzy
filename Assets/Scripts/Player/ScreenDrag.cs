@@ -13,6 +13,8 @@ public class ScreenDrag : MonoBehaviour
     private float vertical;
     private float moveSpeed = 20f;
     private float rigidbodyDrag = 6f;
+
+    public FoxSoundController foxSoundController;
  
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class ScreenDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foxSoundController.setIsActivate(true);
         if (1 == Input.touchCount)
         {
             Touch touch = Input.GetTouch(0);
@@ -34,6 +37,7 @@ public class ScreenDrag : MonoBehaviour
         }
          if (2 == Input.touchCount)
         {
+            foxSoundController.setIsActivate(false);
             Touch touch = Input.GetTouch(0);
              //tran是物体的transform   game1是摄像机的gameObject
             moveDirection = transform.forward * 1;
