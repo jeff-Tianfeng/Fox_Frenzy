@@ -21,6 +21,7 @@ public class FoxHandler : MonoBehaviour
     public GameController gameController;
     public DataCollector dataCollector;
     public FoxBehaviour foxBehaviour;
+    public FakeFoxGenerator fakeFoxGenerator;
     //Three Fox Gameobject, including two fake fox (with no sound).
     private GameObject foxInstance;
     private GameObject foxInstanceFake1;
@@ -80,6 +81,8 @@ public class FoxHandler : MonoBehaviour
         {
             Destroy(foxInstance);
         }
+
+        fakeFoxGenerator.GenerateObjectFake();
 
         Transform spawnAreaTransform = spawnArea.transform;
 

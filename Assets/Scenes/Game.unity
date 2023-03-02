@@ -3112,6 +3112,7 @@ MonoBehaviour:
   gameController: {fileID: 1440126904}
   dataCollector: {fileID: 352955828}
   foxBehaviour: {fileID: 0}
+  fakeFoxGenerator: {fileID: 352955829}
 --- !u!4 &352955826
 Transform:
   m_ObjectHideFlags: 0

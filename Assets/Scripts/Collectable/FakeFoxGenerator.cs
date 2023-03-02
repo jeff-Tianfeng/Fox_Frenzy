@@ -28,8 +28,12 @@ public class FakeFoxGenerator : MonoBehaviour
 
     }
 
-        public void GenerateObjectFake()
+    public void GenerateObjectFake()
     {
+        if(foxInstanceFake1 != null)
+        {
+            Destroy(foxInstanceFake1);
+        }
 
         Transform spawnAreaTransform = spawnArea.transform;
 
