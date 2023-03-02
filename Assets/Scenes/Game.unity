@@ -3171,6 +3171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 2066184483}
   collectable: {fileID: 7176664255988361252, guid: fdf20e33ecb966243bc3af9ff5cd2f08, type: 3}
+  foxBehaviour: {fileID: 0}
+  foxHandler: {fileID: 352955825}
 --- !u!1 &362272522
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,12 +10,16 @@ public class FakeFoxGenerator : MonoBehaviour
     private int[] zCoordinate = {-28, 0, 28};
     private GameObject foxInstanceFake1;
     public FoxBehaviour foxBehaviour;
+    public FoxHandler foxHandler;
     // Start is called before the first frame update
     void Start()
     {   
         foxBehaviour = collectable.GetComponent<FoxBehaviour>();
         foxBehaviour.setFoxFake();
-        GenerateObjectFake();
+        if (foxInstanceFake1 == null) 
+        {
+            GenerateObjectFake();
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +38,19 @@ public class FakeFoxGenerator : MonoBehaviour
 
         int xIndex = Random.Range(0,5);
         int zIndex = Random.Range(0,3);
+        //prevent fake fox and real fox pop is same position.
+        if(xIndex == foxHandler.getX() && zIndex == foxHandler.getY())
+        {
+            if(xIndex == 0)
+            {
+                xIndex ++;
+            }else if(xIndex == 5)
+            {
+                xIndex --;
+            }else{
+                xIndex++;
+            }
+        }
         foxInstanceFake1 = Instantiate(collectable, new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]), Quaternion.identity);
     }
 }

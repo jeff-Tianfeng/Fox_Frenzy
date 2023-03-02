@@ -34,6 +34,9 @@ public class FoxHandler : MonoBehaviour
     //Blocker to prevent multi call.
     private bool coordBlocker = false;
 
+    int xIndex = 0;
+    int zIndex = 0;
+
     void Start()
     {
         if (foxInstance == null)
@@ -90,8 +93,8 @@ public class FoxHandler : MonoBehaviour
         // float yPosition = spawnAreaPosition.y + collectable.transform.localScale.y;
 
         //foxInstance = Instantiate(collectable, new Vector3(xPosition, yPosition, zPosition), Quaternion.identity);
-        int xIndex = Random.Range(0,5);
-        int zIndex = Random.Range(0,3);
+        xIndex = Random.Range(0,5);
+        zIndex = Random.Range(0,3);
         foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
 
         Coords temp = new Coords();
@@ -110,5 +113,15 @@ public class FoxHandler : MonoBehaviour
             GenerateObjectTrue();
         }
         return foxInstance;
+    }
+
+    public int getX()
+    {
+        return xIndex;
+    }
+
+    public int getY()
+    {
+        return zIndex;
     }
 }
