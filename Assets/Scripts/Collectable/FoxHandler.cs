@@ -12,28 +12,41 @@ public struct Coords
 /// Handles the generation and "ownership" of the current fox
 /// </summary>
 public class FoxHandler : MonoBehaviour
-{
+{   
+    //Fox Prefab.
     public GameObject collectable;
+    //Gaming Area.
     public GameObject spawnArea;
+    //Game scripts.
     public GameController gameController;
-    
     public DataCollector dataCollector;
-
+    public FoxBehaviour foxBehaviour;
+    //Three Fox Gameobject, including two fake fox (with no sound).
     private GameObject foxInstance;
+    private GameObject foxInstanceFake1;
+    private GameObject foxInstanceFake2;
+    //Fox spawn point range.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
+    //
     private List<Coords> coords= new List<Coords>();
     private string tempStr;
-
+    //Blocker to prevent multi call.
     private bool coordBlocker = false;
 
     void Start()
     {
-        if (foxInstance == null) GenerateObject();
+        if (foxInstance == null)
+        {
+            GenerateObjectTrue();
+        }
+        foxBehaviour = collectable.GetComponent<FoxBehaviour>();
+
     }
 
     void Update()
     {
+       foxBehaviour.getState();
         if(gameController.GetTimer() == 10 && coordBlocker == false)
         {
             int length = coords.Count;
@@ -51,14 +64,14 @@ public class FoxHandler : MonoBehaviour
     /// </summary>
     public void CollectableCollected()
     {
-        GenerateObject();
+        GenerateObjectTrue();
     }
 
     /// <summary>
     /// Generates a new instance of the collectable object in a random location.
     /// Destroys any existing instances of the collectable object.
     /// </summary>
-    public void GenerateObject()
+    public void GenerateObjectTrue()
     {
         if (foxInstance != null)
         {
@@ -92,7 +105,10 @@ public class FoxHandler : MonoBehaviour
 
     public GameObject GetFox()
     {
-        if (foxInstance == null) GenerateObject();
+        if (foxInstance == null) 
+        {
+            GenerateObjectTrue();
+        }
         return foxInstance;
     }
 }

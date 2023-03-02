@@ -11,7 +11,7 @@ public class ScreenDrag : MonoBehaviour
     private Vector3 moveDirection;
     private float horizontal;
     private float vertical;
-    private float moveSpeed = 5f;
+    private float moveSpeed = 20f;
     private float rigidbodyDrag = 6f;
  
 

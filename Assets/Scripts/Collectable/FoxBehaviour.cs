@@ -19,15 +19,15 @@ public class FoxBehaviour : MonoBehaviour
     private State currentState = State.Buried;
 
     [SerializeField]
-    private float popUpRadius = 6;
+    private float popUpRadius = 10000;
     [SerializeField]
     private float burrowedYPos = -1f;
     [SerializeField]
     private float poppedUpYPos = 0.1f;
     [SerializeField]
-    private float timeToPopUp = 2;
+    private float timeToPopUp = 2f;
     [SerializeField]
-    private float timeToRunAway = 10;
+    private float timeToRunAway = 100f;
     /// <summary>
     /// The maximum angle between the look direction and the fox which will cause the fox to pop up
     /// </summary>
@@ -40,24 +40,39 @@ public class FoxBehaviour : MonoBehaviour
 
     private float distanceToPlayer = 100;
 
+    private bool isFoxPopUp = false;
+
+    public bool isTrueFox = true;
+
     private void Awake()
     {
         //set initial fox y position
-        FoxDown();
+        if(isTrueFox)
+        {
+            FoxDown();
+        }else{
+            FoxNotDown();
+        }
     }
 
     private void Start()
     {
         //start logging
-        gameController.StartNewSearch();
+        if(isTrueFox)
+        {
+            gameController.StartNewSearch();
+        }
     }
 
     private void Update()
     {
-        distanceToPlayer = gameController.GetPlayerDistanceToFox();
-        //decide behaviour based on distance to player and current state
-        StairingPrompt();
-        FoxPopPrompt();
+        if(isTrueFox)
+        {
+            distanceToPlayer = gameController.GetPlayerDistanceToFox();
+            //decide behaviour based on distance to player and current state
+            StairingPrompt();
+            FoxPopPrompt();
+        }
     }
     /// <summary>
     /// When player close to the fox, tell players stairing at the fox for a while.
@@ -77,7 +92,7 @@ public class FoxBehaviour : MonoBehaviour
         //&& currentState == State.Buried && isPlayerLookingAtFox()
         {
             StartCoroutine(PopUp());
-
+            
             TurnTowards(gameController.GetPlayerPosition());
             Title.Instance.Show("You found a fox!", "", 60, 30);
             gameController.FoxPoppedUp();
@@ -93,6 +108,9 @@ public class FoxBehaviour : MonoBehaviour
     /// <summary>
     public void FoxDown(){
         transform.position = SetYComponent(transform.position, burrowedYPos);
+    }
+    public void FoxNotDown(){
+        transform.position = SetYComponent(transform.position, poppedUpYPos);
     }
 
     /// <summary>
@@ -185,6 +203,17 @@ public class FoxBehaviour : MonoBehaviour
 
     public float getAngle(){
         return gameController.GetPlayerAngleToFox();
+    }
+
+    public void getState()
+    {
+        Debug.Log(currentState);
+    }
+
+    public void setFoxFake()
+    {
+        isTrueFox = false;
+        Debug.Log("dAHUSHISHABI");
     }
 
 }

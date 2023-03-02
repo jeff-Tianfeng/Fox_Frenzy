@@ -134,11 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  popUpRadius: 6
+  popUpRadius: 1000
   burrowedYPos: -1
   poppedUpYPos: 0.1
   timeToPopUp: 2
-  timeToRunAway: 10
+  timeToRunAway: 10000
   maximumViewAngleToPopUp: 30
   collected: 0
 --- !u!65 &-7760448607308690061
@@ -166,8 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42176d0fd11f34ced8b81d30f798395a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuController: {fileID: 0}
   foxBehaviour: {fileID: -2512572573150742420}
   gameController: {fileID: 310088376689720680, guid: 4b900c8c8586ef14aa6a91a62e6b3a12, type: 3}
+  scoreController: {fileID: 0}
   countInterval: 50
 --- !u!95 &5076038131845999572
 Animator:

@@ -155,11 +155,11 @@ public class GameController : MonoBehaviour
 
     private void IsFoxToward()
     {
-       if(GetPlayerAngleToFox() <= 20 && !MsgBlocker)
+       if(GetPlayerAngleToFox() <= 10 && !MsgBlocker)
        {
             Title.Instance.Show("Moving toward", "Fox is infront of you!");
             MsgBlocker = true;
-       }else if(GetPlayerAngleToFox() > 60 && MsgBlocker)
+       }else if(GetPlayerAngleToFox() > 70 && MsgBlocker)
        {
             Title.Instance.Show("Listen carefully", "locate the fox again!");
             MsgBlocker = false;
