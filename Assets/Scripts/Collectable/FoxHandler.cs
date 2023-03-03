@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Constructor that contains the fox coordinates.
+/// </summary>
 public struct Coords
 {
     public int x;
@@ -29,7 +32,7 @@ public class FoxHandler : MonoBehaviour
     //Fox spawn point range.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
-    //
+
     private List<Coords> coords= new List<Coords>();
     private string tempStr;
     //Blocker to prevent multi call.
@@ -50,7 +53,8 @@ public class FoxHandler : MonoBehaviour
 
     void Update()
     {
-       foxBehaviour.getState();
+        foxBehaviour.getState();
+        // collect all generated fox point, store in Coords constructor and return data to dataCollector.
         if(gameController.GetTimer() == 10 && coordBlocker == false)
         {
             int length = coords.Count;
@@ -88,14 +92,6 @@ public class FoxHandler : MonoBehaviour
 
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
-
-        //calculate random x and z positions within the bounds of the plane
-        // float xPosition = Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
-        // float zPosition = Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
-
-        // float yPosition = spawnAreaPosition.y + collectable.transform.localScale.y;
-
-        //foxInstance = Instantiate(collectable, new Vector3(xPosition, yPosition, zPosition), Quaternion.identity);
         xIndex = Random.Range(0,5);
         zIndex = Random.Range(0,3);
         foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
@@ -108,7 +104,9 @@ public class FoxHandler : MonoBehaviour
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
 
     }
-
+    /// <summary>
+    /// Get the fox gameObject.
+    /// </summary>
     public GameObject GetFox()
     {
         if (foxInstance == null) 

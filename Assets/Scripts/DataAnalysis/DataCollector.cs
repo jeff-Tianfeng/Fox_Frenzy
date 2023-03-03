@@ -5,6 +5,9 @@ using System.IO;
 using System.Text;
 using System;
 
+/// <summary>
+/// Json File class.
+/// </summary>
 public class PlayerPerformanceData
 {
     public string NickName;
@@ -15,7 +18,9 @@ public class PlayerPerformanceData
     public int Score;
     public string Coords;
 }
-
+/// <summary>
+/// Class for extracting data from the game.
+/// </summary>
 public class DataCollector : MonoBehaviour
 {   
     [SerializeField]
@@ -33,8 +38,8 @@ public class DataCollector : MonoBehaviour
 
     private string JsonPath;
 
-    private static float[] dataDistance = new float[1000];
-    private static float[] dataAngle = new float[1000];
+    private static float[] dataDistance = new float[3000];
+    private static float[] dataAngle = new float[3000];
     private static int foxCollectCount = 0;
     private static int collectTime1 = 0;
     private static int collectTime2 = 0;
@@ -99,7 +104,7 @@ public class DataCollector : MonoBehaviour
     public void Save(float[] dataSet, int type)
     {
         string  sb = string.Empty;
-            for(int j = 0; j<1000; j++)
+            for(int j = 0; j<3000; j++)
                 sb = sb + dataSet[j] + ',';
         FileStream fs;
 

@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Generate series of distracting fox
+/// </summary>
 public class FakeFoxGenerator : MonoBehaviour
 {
+    // Game Area
     public GameObject spawnArea;
+    // Fox prefab
     public GameObject collectable;
+    // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
     private GameObject foxInstanceFake1;

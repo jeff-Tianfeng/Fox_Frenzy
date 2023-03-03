@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FoxSoundController : MonoBehaviour
 {
+    // 4 different kinds of rining audio.
     [SerializeField]
     public AudioClip audioClip1;
     [SerializeField]
@@ -18,7 +19,6 @@ public class FoxSoundController : MonoBehaviour
     private ScoreController scoreController;
 
     private bool isActivate = false;
-
     private float timer = 0;
     private float delayTime = 3;//the interval between two bell ring.
     private static int soundPlayTimes = 0;//param for cacukating score get intotal.

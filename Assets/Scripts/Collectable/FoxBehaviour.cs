@@ -9,7 +9,6 @@ using UnityEngine;
 public class FoxBehaviour : MonoBehaviour
 {
     public GameController gameController;
-
     // Fox States:
     // Buried - underground, not moving
     // PoppingUp - in the process of popping out of the ground, in motion
@@ -17,15 +16,18 @@ public class FoxBehaviour : MonoBehaviour
     private enum State { Buried, PoppingUp, Resting }
 
     private State currentState = State.Buried;
-
+    // fox pop up radius between player, 10000 = ultimate, fox will pop up all the time.
     [SerializeField]
     private float popUpRadius = 10000;
+    // Two state's fox y position (burried and popup).
     [SerializeField]
     private float burrowedYPos = -1f;
     [SerializeField]
     private float poppedUpYPos = 0.1f;
+    // popup animation cause time.
     [SerializeField]
     private float timeToPopUp = 2f;
+    // after popup, fox take time to run away
     [SerializeField]
     private float timeToRunAway = 100f;
     /// <summary>
@@ -33,7 +35,7 @@ public class FoxBehaviour : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float maximumViewAngleToPopUp = 30;
-
+    // if fox been collected.
     public bool collected = false;
 
     private float timer = 0;
@@ -46,7 +48,7 @@ public class FoxBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        //set initial fox y position
+        //set initial fox y position, also distinguish true between fake.
         if(isTrueFox)
         {
             FoxDown();
@@ -136,7 +138,10 @@ public class FoxBehaviour : MonoBehaviour
     private void OnCollected()
     {
         //collectable has been collected
-        gameController.FoxCollected();
+        if(gameController!= null)
+        {
+            gameController.FoxCollected();
+        }
     }
 
     /// <summary>
@@ -196,13 +201,20 @@ public class FoxBehaviour : MonoBehaviour
     {
         return gameController.GetPlayerAngleToFox() < maximumViewAngleToPopUp;
     }
-
+    /// <summary>
+    /// getters and setters.
+    /// </summary>
     public float getDistance(){
         return distanceToPlayer;
     }
 
-    public float getAngle(){
-        return gameController.GetPlayerAngleToFox();
+    public float getAngle()
+    {
+        if(gameController!= null)
+        {
+            return gameController.GetPlayerAngleToFox();
+        }
+            return 0;
     }
 
     public void getState()
@@ -213,7 +225,6 @@ public class FoxBehaviour : MonoBehaviour
     public void setFoxFake()
     {
         isTrueFox = false;
-        Debug.Log("dAHUSHISHABI");
     }
 
 }
