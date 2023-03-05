@@ -3171,7 +3171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 2066184483}
-  collectable: {fileID: 7176664255988361252, guid: fdf20e33ecb966243bc3af9ff5cd2f08, type: 3}
+  collectable: {fileID: 919132149155446097, guid: b4dc3c74541def84191303ea727d9a51, type: 3}
   foxBehaviour: {fileID: 0}
   foxHandler: {fileID: 352955825}
 --- !u!1 &362272522

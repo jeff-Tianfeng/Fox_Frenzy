@@ -49,32 +49,22 @@ public class FoxBehaviour : MonoBehaviour
     private void Awake()
     {
         //set initial fox y position, also distinguish true between fake.
-        if(isTrueFox)
-        {
-            FoxDown();
-        }else{
-            FoxNotDown();
-        }
+        FoxDown();
     }
 
     private void Start()
     {
         //start logging
-        if(isTrueFox)
-        {
-            gameController.StartNewSearch();
-        }
+        gameController.StartNewSearch();
     }
 
     private void Update()
     {
-        if(isTrueFox)
-        {
-            distanceToPlayer = gameController.GetPlayerDistanceToFox();
-            //decide behaviour based on distance to player and current state
-            StairingPrompt();
-            FoxPopPrompt();
-        }
+        distanceToPlayer = gameController.GetPlayerDistanceToFox();
+        //decide behaviour based on distance to player and current state
+        StairingPrompt();
+        FoxPopPrompt();
+
     }
     /// <summary>
     /// When player close to the fox, tell players stairing at the fox for a while.
@@ -111,10 +101,6 @@ public class FoxBehaviour : MonoBehaviour
     public void FoxDown(){
         transform.position = SetYComponent(transform.position, burrowedYPos);
     }
-    public void FoxNotDown(){
-        transform.position = SetYComponent(transform.position, poppedUpYPos);
-    }
-
     /// <summary>
     /// Makes the fox face towards the post position.
     /// </summary>

@@ -14,13 +14,10 @@ public class FakeFoxGenerator : MonoBehaviour
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
     private GameObject foxInstanceFake1;
-    public FoxBehaviour foxBehaviour;
     public FoxHandler foxHandler;
     // Start is called before the first frame update
     void Start()
     {   
-        foxBehaviour = collectable.GetComponent<FoxBehaviour>();
-        foxBehaviour.setFoxFake();
         if (foxInstanceFake1 == null) 
         {
             GenerateObjectFake();

@@ -135,12 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
   popUpRadius: 1000
-  burrowedYPos: -1
+  burrowedYPos: 0.1
   poppedUpYPos: 0.1
   timeToPopUp: 2
   timeToRunAway: 10000
   maximumViewAngleToPopUp: 30
   collected: 0
+  isTrueFox: 1
 --- !u!65 &-7760448607308690061
 BoxCollider:
   m_ObjectHideFlags: 0
