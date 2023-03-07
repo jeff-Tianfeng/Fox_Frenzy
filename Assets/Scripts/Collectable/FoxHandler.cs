@@ -94,12 +94,20 @@ public class FoxHandler : MonoBehaviour
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
         xIndex = Random.Range(0,5);
         zIndex = Random.Range(0,3);
-        foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
-
         Coords temp = new Coords();
         temp.x = xCoordinate[xIndex];
         temp.y = zCoordinate[zIndex];
+        if(coords.Contains(temp))
+        {
+            xIndex = Random.Range(0,5);
+            zIndex = Random.Range(0,3);
+            temp.x = xCoordinate[xIndex];
+            temp.y = zCoordinate[zIndex];
+        }
         coords.Add(temp);
+
+        foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
+
         foxInstance.GetComponent<FoxBehaviour>().gameController = gameController;
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
 
