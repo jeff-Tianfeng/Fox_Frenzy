@@ -1,6 +1,7 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 /// <summary>
 /// Constructor that contains the fox coordinates.
@@ -47,6 +48,7 @@ public class FoxHandler : MonoBehaviour
     void Start()
     {
         fakeRandom();
+        playerTest = Outoforder(playerTest);
         if (foxInstance == null)
         {
             GenerateObjectTrue();
@@ -133,6 +135,27 @@ public class FoxHandler : MonoBehaviour
         foxGenerateCounter++;
 
     }
+    /// <summary>
+    /// Rearrange the item in List
+    /// </summary>
+    public List<T> Outoforder<T>(List<T> bag)
+    {
+        Random randomNum = new Random();
+        int index = 0;
+        T temp;
+        for (int i = 0; i < bag.Count; i++)
+        {
+            index = randomNum.Next(0, bag.Count - 1);
+            if (index != i)
+            {
+                temp = bag[i];
+                bag[i] = bag[index];
+                bag[index] = temp;
+            }
+        }
+        return bag;
+    }
+
     /// <summary>
     /// Get the fox gameObject.
     /// </summary>
