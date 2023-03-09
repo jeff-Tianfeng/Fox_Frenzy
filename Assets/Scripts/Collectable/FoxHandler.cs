@@ -34,6 +34,9 @@ public class FoxHandler : MonoBehaviour
     private int[] zCoordinate = {-28, 0, 28};
 
     private List<Coords> coords= new List<Coords>();
+    private List<Coords>  playerTest = new List<Coords>();
+    private int foxGenerateCounter = 0;
+
     private string tempStr;
     //Blocker to prevent multi call.
     private bool coordBlocker = false;
@@ -43,6 +46,7 @@ public class FoxHandler : MonoBehaviour
 
     void Start()
     {
+        fakeRandom();
         if (foxInstance == null)
         {
             GenerateObjectTrue();
@@ -75,6 +79,20 @@ public class FoxHandler : MonoBehaviour
         GenerateObjectTrue();
     }
 
+    private void fakeRandom()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                Coords fakeTemp = new Coords();
+                fakeTemp.x = xCoordinate[i];
+                fakeTemp.y = zCoordinate[j];
+                playerTest.Add(fakeTemp);
+            }
+        }
+    }
+
     /// <summary>
     /// Generates a new instance of the collectable object in a random location.
     /// Destroys any existing instances of the collectable object.
@@ -89,27 +107,30 @@ public class FoxHandler : MonoBehaviour
         fakeFoxGenerator.GenerateObjectFake();
 
         Transform spawnAreaTransform = spawnArea.transform;
-
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
-        xIndex = Random.Range(0,5);
-        zIndex = Random.Range(0,3);
-        Coords temp = new Coords();
-        temp.x = xCoordinate[xIndex];
-        temp.y = zCoordinate[zIndex];
-        if(coords.Contains(temp))
-        {
-            xIndex = Random.Range(0,5);
-            zIndex = Random.Range(0,3);
-            temp.x = xCoordinate[xIndex];
-            temp.y = zCoordinate[zIndex];
-        }
+
+        // xIndex = Random.Range(0,5);
+        // zIndex = Random.Range(0,3);
+        // Coords temp = new Coords();
+        // temp.x = xCoordinate[xIndex];
+        // temp.y = zCoordinate[zIndex];
+        // if(coords.Contains(temp))
+        // {
+        //     xIndex = Random.Range(0,5);
+        //     zIndex = Random.Range(0,3);
+        //     temp.x = xCoordinate[xIndex];
+        //     temp.y = zCoordinate[zIndex];
+        // }
+        Coords temp = playerTest[foxGenerateCounter];
         coords.Add(temp);
 
-        foxInstance = Instantiate(collectable, new Vector3(xCoordinate[xIndex], -0.2f, zCoordinate[zIndex]), Quaternion.identity);
+        foxInstance = Instantiate(collectable, new Vector3(temp.x, -0.2f, temp.y), Quaternion.identity);
 
         foxInstance.GetComponent<FoxBehaviour>().gameController = gameController;
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
+
+        foxGenerateCounter++;
 
     }
     /// <summary>
