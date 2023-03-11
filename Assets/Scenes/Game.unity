@@ -3088,6 +3088,7 @@ GameObject:
   - component: {fileID: 352955827}
   - component: {fileID: 352955828}
   - component: {fileID: 352955829}
+  - component: {fileID: 352955830}
   m_Layer: 0
   m_Name: FoxHandler
   m_TagString: Untagged
@@ -3172,8 +3173,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 2066184483}
   collectable: {fileID: 919132149155446097, guid: b4dc3c74541def84191303ea727d9a51, type: 3}
-  foxBehaviour: {fileID: 0}
   foxHandler: {fileID: 352955825}
+--- !u!114 &352955830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352955824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8cdf4e6713d0244884a4d693219162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeFoxGenerator: {fileID: 352955829}
+  foxHandler: {fileID: 352955825}
+  gameController: {fileID: 1440126904}
 --- !u!1 &362272522
 GameObject:
   m_ObjectHideFlags: 0

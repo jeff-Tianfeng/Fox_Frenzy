@@ -177,4 +177,9 @@ public class FoxHandler : MonoBehaviour
     {
         return zIndex;
     }
+    public float getDeviation()
+    {
+        float deviation = foxBehaviour.getAngle(); 
+        return deviation;
+    }
 }
