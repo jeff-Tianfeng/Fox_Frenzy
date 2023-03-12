@@ -3189,6 +3189,7 @@ MonoBehaviour:
   fakeFoxGenerator: {fileID: 352955829}
   foxHandler: {fileID: 352955825}
   gameController: {fileID: 1440126904}
+  foxSoundController: {fileID: 1847485021}
 --- !u!1 &362272522
 GameObject:
   m_ObjectHideFlags: 0

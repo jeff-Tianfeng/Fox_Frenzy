@@ -84,4 +84,9 @@ public class FoxSoundController : MonoBehaviour
         isActivate = active;
     }
 
+    public void setSoundDeviation(int deviation)
+    {
+        delayTime = deviation;
+    }
+
 }

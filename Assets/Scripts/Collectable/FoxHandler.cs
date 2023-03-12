@@ -111,7 +111,6 @@ public class FoxHandler : MonoBehaviour
         Transform spawnAreaTransform = spawnArea.transform;
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
-
         // xIndex = Random.Range(0,5);
         // zIndex = Random.Range(0,3);
         // Coords temp = new Coords();

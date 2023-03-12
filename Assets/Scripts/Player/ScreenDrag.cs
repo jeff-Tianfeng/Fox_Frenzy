@@ -39,7 +39,6 @@ public class ScreenDrag : MonoBehaviour
         {
             foxSoundController.setIsActivate(false);
             Touch touch = Input.GetTouch(0);
-             //tran是物体的transform   game1是摄像机的gameObject
             moveDirection = transform.forward * 1;
             rigidbody.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Acceleration);
         }

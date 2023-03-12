@@ -7,9 +7,7 @@ public class DifficultController : MonoBehaviour
     public FakeFoxGenerator fakeFoxGenerator;
     public FoxHandler foxHandler;
     public GameController gameController;
-    //Game difficult level.
-    private enum State { Easy, Medium, Hard };
-    private State currentState = State.Easy;
+    public FoxSoundController foxSoundController;
     private List<float> deviations = new List<float>();
     private int countInterval = 50;
     private int collectCount = 0;
@@ -31,15 +29,16 @@ public class DifficultController : MonoBehaviour
             avgDeviation = calculateAvgDeviation();
             if(avgDeviation <= 30)
             {
-                currentState = State.Medium;
+                MediumMode();
             }else if(avgDeviation <= 15)
-            {
-                currentState = State.Hard;
+            {   
+                HardMode();
             }else{
-                currentState = State.Easy;
+                EasyMode();
             }
-            Debug.Log(currentState);
         }
+
+        
 
     }
 
@@ -58,5 +57,21 @@ public class DifficultController : MonoBehaviour
         }
         temp = temp / collectCount;
         return temp;
+    }
+
+    private void EasyMode()
+    {
+        foxSoundController.setSoundDeviation(3);
+        fakeFoxGenerator.setDifficult(false);
+    }
+    private void MediumMode()
+    {
+        foxSoundController.setSoundDeviation(5);
+        fakeFoxGenerator.setDifficult(true);
+    }
+    private void HardMode()
+    {
+        foxSoundController.setSoundDeviation(7);
+        fakeFoxGenerator.setDifficult(true);
     }
 }
