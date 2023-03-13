@@ -7,29 +7,47 @@ using UnityEngine;
 public class FakeFoxGenerator : MonoBehaviour
 {
     // Game Area
+    [SerializeField]
     public GameObject spawnArea;
     // Fox prefab
+    [SerializeField]
     public GameObject collectable;
+    [SerializeField]
+    private GameController gameController;
+    [SerializeField]
+    public FoxHandler foxHandler;
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
     // Two fox gameObjects
     private GameObject foxInstanceFake1;
     private GameObject foxInstanceFake2;
-
-    public FoxHandler foxHandler;
     // If the game is difficult level.
     private bool isDifficultLevel = false;
+
+    private Vector3 fox1Position = new Vector3(100,0,0);
+    private Vector3 fox2Position = new Vector3(100,0,0);
+    private float Fox1ToPlayer = 100;
+    private float Fox2ToPlayer = 100;
+
     // Start is called before the first frame update
     void Start()
     {   
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Vector3 playerPos = gameController.GetPlayerPosition();
+        Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
+        Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
+        Debug.Log(Fox1ToPlayer);
+        Debug.Log(Fox2ToPlayer);
+        if(Fox1ToPlayer < 1.5 || Fox2ToPlayer < 1.5)
+        {
+            collectFakeFox();
+        }
     }
     /// <summary>
     /// Function to generate fake fox.
@@ -59,7 +77,8 @@ public class FakeFoxGenerator : MonoBehaviour
                 break;
             }
         }
-        foxInstanceFake1 = Instantiate(collectable, new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]), Quaternion.identity);
+        fox1Position =  new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]);
+        foxInstanceFake1 = Instantiate(collectable, fox1Position, Quaternion.identity);
         // if is difficult level, add another fake fox.
         if(isDifficultLevel == true)
         {
@@ -74,7 +93,8 @@ public class FakeFoxGenerator : MonoBehaviour
                     break;
                 }
             }
-            foxInstanceFake2 = Instantiate(collectable, new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]), Quaternion.identity);
+            fox2Position = new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]);
+            foxInstanceFake2 = Instantiate(collectable, fox2Position, Quaternion.identity);
         }
     }
 
@@ -82,4 +102,9 @@ public class FakeFoxGenerator : MonoBehaviour
     {
         isDifficultLevel = level;
     }
+    private void collectFakeFox()
+    {
+       Debug.Log("Collected Fake Fox");
+    }
+
 }

@@ -3172,7 +3172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 2066184483}
-  collectable: {fileID: 919132149155446097, guid: b4dc3c74541def84191303ea727d9a51, type: 3}
+  collectable: {fileID: 6232291438263330378, guid: 7349348cb5b02344a8c8e069ea90cb2e, type: 3}
+  gameController: {fileID: 1440126904}
   foxHandler: {fileID: 352955825}
 --- !u!114 &352955830
 MonoBehaviour:
@@ -5744,6 +5745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foxSoundController: {fileID: 1847485021}
+  gameStateController: {fileID: 0}
 --- !u!1001 &759584671
 PrefabInstance:
   m_ObjectHideFlags: 0
