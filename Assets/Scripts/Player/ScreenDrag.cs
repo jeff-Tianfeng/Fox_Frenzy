@@ -15,6 +15,7 @@ public class ScreenDrag : MonoBehaviour
     private float rigidbodyDrag = 6f;
 
     public FoxSoundController foxSoundController;
+    public GameStateController gameStateController;
  
 
     // Start is called before the first frame update
@@ -28,19 +29,22 @@ public class ScreenDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foxSoundController.setIsActivate(true);
-        if (1 == Input.touchCount)
+        if(GameStateController.Instance.CurrentState == GameStateController.State.Game)
         {
-            Touch touch = Input.GetTouch(0);
-            Vector2 deltaPos = touch.deltaPosition;
-            transform.Rotate(Vector3.down * deltaPos.x * rotateIntensity);//rotate around y axis.
-        }
-         if (2 == Input.touchCount)
-        {
-            foxSoundController.setIsActivate(false);
-            Touch touch = Input.GetTouch(0);
-            moveDirection = transform.forward * 1;
-            rigidbody.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Acceleration);
+            foxSoundController.setIsActivate(true);
+            if (1 == Input.touchCount)
+            {
+                Touch touch = Input.GetTouch(0);
+                Vector2 deltaPos = touch.deltaPosition;
+                transform.Rotate(Vector3.down * deltaPos.x * rotateIntensity);//rotate around y axis.
+            }
+            if (2 == Input.touchCount)
+            {
+                foxSoundController.setIsActivate(false);
+                Touch touch = Input.GetTouch(0);
+                moveDirection = transform.forward * 1;
+                rigidbody.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Acceleration);
+            }
         }
     }
 }

@@ -13,9 +13,12 @@ public class FakeFoxGenerator : MonoBehaviour
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
+    // Two fox gameObjects
     private GameObject foxInstanceFake1;
     private GameObject foxInstanceFake2;
+
     public FoxHandler foxHandler;
+    // If the game is difficult level.
     private bool isDifficultLevel = false;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,9 @@ public class FakeFoxGenerator : MonoBehaviour
     {
 
     }
-
+    /// <summary>
+    /// Function to generate fake fox.
+    /// </summary>
     public void GenerateObjectFake()
     {
         if(foxInstanceFake1 != null)

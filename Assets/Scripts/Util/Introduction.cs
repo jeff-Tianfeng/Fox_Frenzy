@@ -11,7 +11,7 @@ public class Introduction : MonoBehaviour
     {
         Title.Instance.Show(
             "Get Ready...",
-            "",
+            "Find the fox that its bell ringing",
             50,
             lifeTime: lifeTime
         );
