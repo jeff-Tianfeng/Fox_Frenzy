@@ -63,8 +63,8 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         MonitorPlayer();
-        IsMissFox();
-        IsFoxToward();
+        //IsMissFox();
+        //IsFoxToward();
     }
 
     /// <summary>
@@ -83,6 +83,15 @@ public class GameController : MonoBehaviour
         audioSource.Play();
 
         isFoxHidden = true;
+    }
+
+    public void FakeFoxCollected()
+    {
+        ResetPlayer();
+
+        foxHandler.CollectableCollected();
+
+        scoreController.Punishment();
     }
 
     /// <summary>

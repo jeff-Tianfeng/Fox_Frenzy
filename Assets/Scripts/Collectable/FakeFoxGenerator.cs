@@ -16,6 +16,8 @@ public class FakeFoxGenerator : MonoBehaviour
     private GameController gameController;
     [SerializeField]
     public FoxHandler foxHandler;
+    [SerializeField]
+    private int lifeTime = 8;
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
@@ -29,6 +31,8 @@ public class FakeFoxGenerator : MonoBehaviour
     private Vector3 fox2Position = new Vector3(100,0,0);
     private float Fox1ToPlayer = 100;
     private float Fox2ToPlayer = 100;
+    private int FakeFoxCollectTime = 0;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +46,7 @@ public class FakeFoxGenerator : MonoBehaviour
         Vector3 playerPos = gameController.GetPlayerPosition();
         Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
         Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
-        Debug.Log(Fox1ToPlayer);
-        Debug.Log(Fox2ToPlayer);
-        if(Fox1ToPlayer < 1.5 || Fox2ToPlayer < 1.5)
+        if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
         {
             collectFakeFox();
         }
@@ -104,7 +106,19 @@ public class FakeFoxGenerator : MonoBehaviour
     }
     private void collectFakeFox()
     {
-       Debug.Log("Collected Fake Fox");
+        FakeFoxCollectTime++;
+        gameController.FakeFoxCollected();
+        Title.Instance.Show(
+            "You found a fake fox",
+            "It's bell is not ringing, try again",
+            50,
+            lifeTime: lifeTime
+        );
+    }
+
+    public int getFakeFoxCollectTime()
+    {
+        return FakeFoxCollectTime;
     }
 
 }

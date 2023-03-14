@@ -15,6 +15,7 @@ public class PlayerPerformanceData
     public float[] dataDistanceJS;
     public float[] dataAngleJS;
     public int foxCollectCountJS;
+    public int fakeFoxCollectCountJS;
     public int Score;
     public string Coords;
 }
@@ -127,12 +128,12 @@ public class DataCollector : MonoBehaviour
         if(gameController!= null){
 
             if(blockSignal != -1){
-            blockSignal = gameController.GetTimer();
-        }else{
-            blockSignal = -1;
-        }
+                blockSignal = gameController.GetTimer();
+            }else{
+                blockSignal = -1;
+            }
     
-        if(blockSignal == 5){
+        if(blockSignal == 170){
             Save(dataDistance,1);
             Save(dataAngle,2);
 

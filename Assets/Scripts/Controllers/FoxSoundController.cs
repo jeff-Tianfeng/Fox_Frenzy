@@ -34,7 +34,7 @@ public class FoxSoundController : MonoBehaviour
         if(isActivate)
         {
             RingAtFoxPosition();
-            checkIfOverTime();
+            //checkIfOverTime();
         }
     }
 

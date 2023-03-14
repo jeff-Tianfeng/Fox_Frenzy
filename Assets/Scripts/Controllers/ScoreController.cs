@@ -47,6 +47,7 @@ public class ScoreController : MonoBehaviour
 
     public void Punishment(){
         defaultScore -= 2;
+        Debug.Log("PUNISHED");
     }
 
 }

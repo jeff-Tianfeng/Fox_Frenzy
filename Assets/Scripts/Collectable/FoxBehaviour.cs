@@ -63,7 +63,7 @@ public class FoxBehaviour : MonoBehaviour
         distanceToPlayer = gameController.GetPlayerDistanceToFox();
         //decide behaviour based on distance to player and current state
         //StairingPrompt();
-        //FoxPopPrompt();
+        FoxPopPrompt();
 
     }
     /// <summary>
@@ -80,7 +80,7 @@ public class FoxBehaviour : MonoBehaviour
     /// When player stairing at fox for 3 sceonds then fox pop up.
     /// <summary>
     private void FoxPopPrompt(){
-        if (distanceToPlayer < popUpRadius && currentState == State.Buried && timer >=3)
+        if (distanceToPlayer < popUpRadius && currentState == State.Buried)
         //&& currentState == State.Buried && isPlayerLookingAtFox()
         {
             StartCoroutine(PopUp());
