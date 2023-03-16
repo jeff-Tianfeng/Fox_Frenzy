@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        MonitorPlayer();
+        //MonitorPlayer();
         //IsMissFox();
         //IsFoxToward();
     }
@@ -88,9 +88,9 @@ public class GameController : MonoBehaviour
     public void FakeFoxCollected()
     {
         ResetPlayer();
-
-        foxHandler.CollectableCollected();
-
+        EndSearch();
+        foxHandler.GenerateNewFakeFox();
+        StartNewSearch();
         scoreController.Punishment();
     }
 

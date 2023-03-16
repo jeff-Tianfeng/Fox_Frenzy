@@ -46,6 +46,8 @@ public class FakeFoxGenerator : MonoBehaviour
         Vector3 playerPos = gameController.GetPlayerPosition();
         Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
         Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
+        Debug.Log(Fox1ToPlayer);
+        Debug.Log(Fox2ToPlayer);
         if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
         {
             collectFakeFox();

@@ -81,6 +81,10 @@ public class FoxHandler : MonoBehaviour
         GenerateObjectTrue();
     }
 
+    public void GenerateNewFakeFox()
+    {
+        fakeFoxGenerator.GenerateObjectFake();
+    }
     private void fakeRandom()
     {
         for(int i = 0; i < 5; i++)
@@ -160,10 +164,6 @@ public class FoxHandler : MonoBehaviour
     /// </summary>
     public GameObject GetFox()
     {
-        if (foxInstance == null) 
-        {
-            GenerateObjectTrue();
-        }
         return foxInstance;
     }
 

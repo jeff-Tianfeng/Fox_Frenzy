@@ -45,7 +45,6 @@ public class DifficultController : MonoBehaviour
     private void collectDeviation()
     {
         deviations.Add(gameController.GetPlayerAngleToFox());
-
     }
 
     private float calculateAvgDeviation()

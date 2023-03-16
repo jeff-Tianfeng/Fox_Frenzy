@@ -63,7 +63,7 @@ public class FoxBehaviour : MonoBehaviour
         distanceToPlayer = gameController.GetPlayerDistanceToFox();
         //decide behaviour based on distance to player and current state
         //StairingPrompt();
-        FoxPopPrompt();
+        //FoxPopPrompt();
 
     }
     /// <summary>
