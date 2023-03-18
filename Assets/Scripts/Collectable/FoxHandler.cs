@@ -18,15 +18,23 @@ public struct Coords
 public class FoxHandler : MonoBehaviour
 {   
     //Fox Prefab.
+    [SerializeField]
     public GameObject collectable;
     //Gaming Area.
+    [SerializeField]
     public GameObject spawnArea;
     //Game scripts.
+    [SerializeField]
     public GameController gameController;
+    [SerializeField]
     public DataCollector dataCollector;
+    [SerializeField]
     public FoxBehaviour foxBehaviour;
+    [SerializeField]
     public FakeFoxGenerator fakeFoxGenerator;
     //Three Fox Gameobject, including two fake fox (with no sound).
+    [SerializeField]
+    private int lifeTime = 8;
     private GameObject foxInstance;
     private GameObject foxInstanceFake1;
     private GameObject foxInstanceFake2;
@@ -42,8 +50,8 @@ public class FoxHandler : MonoBehaviour
     //Blocker to prevent multi call.
     private bool coordBlocker = false;
 
-    int xIndex = 0;
-    int zIndex = 0;
+    private int xIndex = 0;
+    private int zIndex = 0;
 
     void Start()
     {
@@ -110,23 +118,10 @@ public class FoxHandler : MonoBehaviour
             Destroy(foxInstance);
         }
 
-        fakeFoxGenerator.GenerateObjectFake();
-
         Transform spawnAreaTransform = spawnArea.transform;
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
-        // xIndex = Random.Range(0,5);
-        // zIndex = Random.Range(0,3);
-        // Coords temp = new Coords();
-        // temp.x = xCoordinate[xIndex];
-        // temp.y = zCoordinate[zIndex];
-        // if(coords.Contains(temp))
-        // {
-        //     xIndex = Random.Range(0,5);
-        //     zIndex = Random.Range(0,3);
-        //     temp.x = xCoordinate[xIndex];
-        //     temp.y = zCoordinate[zIndex];
-        // }
+
         Coords temp = playerTest[foxGenerateCounter];
         coords.Add(temp);
 
@@ -135,7 +130,17 @@ public class FoxHandler : MonoBehaviour
         foxInstance.GetComponent<FoxBehaviour>().gameController = gameController;
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
 
+        xIndex = temp.x;
+        zIndex = temp.y;
+
+        fakeFoxGenerator.GenerateObjectFake();
+
         foxGenerateCounter++;
+        if(foxGenerateCounter == 15)
+        {
+            fakeRandom();
+            foxGenerateCounter = 0;
+        }
 
     }
     /// <summary>
@@ -157,6 +162,16 @@ public class FoxHandler : MonoBehaviour
             }
         }
         return bag;
+    }
+
+    public void collectTrueFox()
+    {
+        Title.Instance.Show(
+            "You found the fox!",
+            "New search begin now",
+            50,
+            lifeTime: lifeTime
+        );
     }
 
     /// <summary>

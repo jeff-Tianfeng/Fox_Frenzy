@@ -3746,6 +3746,7 @@ MonoBehaviour:
   dataCollector: {fileID: 352955828}
   foxBehaviour: {fileID: 0}
   fakeFoxGenerator: {fileID: 352955829}
+  lifeTime: 8
 --- !u!4 &352955826
 Transform:
   m_ObjectHideFlags: 0
@@ -19200,7 +19201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582525007007084997, guid: c03dfe2023360cf4fbfc5197b59c1566, type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 482744243, guid: c03dfe2023360cf4fbfc5197b59c1566, type: 3}

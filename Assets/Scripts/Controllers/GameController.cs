@@ -75,13 +75,12 @@ public class GameController : MonoBehaviour
         searchTime++;
 
         ResetPlayer();
-
         foxHandler.CollectableCollected();
 
         scoreController.AddScore();
 
         audioSource.Play();
-
+        foxHandler.collectTrueFox();
         isFoxHidden = true;
     }
 

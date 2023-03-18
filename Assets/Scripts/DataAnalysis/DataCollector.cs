@@ -133,7 +133,7 @@ public class DataCollector : MonoBehaviour
                 blockSignal = -1;
             }
     
-        if(blockSignal == 170){
+        if(blockSignal == 5){
             Save(dataDistance,1);
             Save(dataAngle,2);
 

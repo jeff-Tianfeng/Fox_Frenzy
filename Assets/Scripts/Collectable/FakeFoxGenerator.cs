@@ -46,8 +46,6 @@ public class FakeFoxGenerator : MonoBehaviour
         Vector3 playerPos = gameController.GetPlayerPosition();
         Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
         Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
-        Debug.Log(Fox1ToPlayer);
-        Debug.Log(Fox2ToPlayer);
         if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
         {
             collectFakeFox();
@@ -72,11 +70,12 @@ public class FakeFoxGenerator : MonoBehaviour
         // Generate first fox.
         int xIndex = Random.Range(0,5);
         int zIndex = Random.Range(0,3);
+        Debug.Log(foxHandler.getX());
         //prevent fake fox and real fox pop is same position.
         while(true){
             xIndex = Random.Range(0,5);
             zIndex = Random.Range(0,3);
-            if(xIndex != foxHandler.getX() && zIndex != foxHandler.getY())
+            if(xCoordinate[xIndex] != foxHandler.getX() && zCoordinate[zIndex] != foxHandler.getY())
             {
                 break;
             }
@@ -92,7 +91,7 @@ public class FakeFoxGenerator : MonoBehaviour
             while(true){
                 xIndex = Random.Range(0,5);
                 zIndex = Random.Range(0,3);
-                if(xIndex != foxHandler.getX() && zIndex != foxHandler.getY())
+                if(xCoordinate[xIndex] != foxHandler.getX() && zCoordinate[zIndex] != foxHandler.getY())
                 {
                     break;
                 }

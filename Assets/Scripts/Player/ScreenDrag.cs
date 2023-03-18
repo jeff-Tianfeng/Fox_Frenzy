@@ -11,8 +11,8 @@ public class ScreenDrag : MonoBehaviour
     private Vector3 moveDirection;
     private float horizontal;
     private float vertical;
-    private float moveSpeed = 20f;
-    private float rigidbodyDrag = 6f;
+    private float moveSpeed = 40f;
+    private float rigidbodyDrag = 4f;
 
     public FoxSoundController foxSoundController;
     public GameStateController gameStateController;
@@ -21,6 +21,7 @@ public class ScreenDrag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foxSoundController.setIsActivate(true);
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.drag = rigidbodyDrag;
         cam = GetComponentInChildren<Camera>();
