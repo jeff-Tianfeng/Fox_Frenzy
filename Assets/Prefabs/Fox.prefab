@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4355298655438926109}
   - component: {fileID: 5076038131845999572}
   - component: {fileID: 1793397386371482424}
+  - component: {fileID: 4342523868041366632}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -172,7 +173,6 @@ MonoBehaviour:
   foxBehaviour: {fileID: -2512572573150742420}
   gameController: {fileID: 310088376689720680, guid: 4b900c8c8586ef14aa6a91a62e6b3a12, type: 3}
   scoreController: {fileID: 0}
-  fakeFoxGenerator: {fileID: 0}
   countInterval: 50
 --- !u!95 &5076038131845999572
 Animator:
@@ -183,7 +183,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7176664255988361252}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b4dc3c74541def84191303ea727d9a51, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -209,3 +209,19 @@ MonoBehaviour:
   foxHandler: {fileID: 0}
   gameController: {fileID: 0}
   foxSoundController: {fileID: 0}
+--- !u!111 &4342523868041366632
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7176664255988361252}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b359d9a15108117499763292dd82314d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b359d9a15108117499763292dd82314d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
