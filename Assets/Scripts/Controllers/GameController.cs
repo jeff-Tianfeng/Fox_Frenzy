@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+    
     private PlayerMovement playerMovement;
 
     public static int searchTime = 0;
@@ -134,7 +135,6 @@ public class GameController : MonoBehaviour
             scoreController.Punishment();
         }
     }
-
     /// <summary>
     /// Check if the fox is in player's view angle, if yes return true else return false.
     /// </summary>

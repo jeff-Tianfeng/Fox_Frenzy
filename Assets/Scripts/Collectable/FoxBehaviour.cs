@@ -8,13 +8,13 @@ using UnityEngine;
 /// </summary>
 public class FoxBehaviour : MonoBehaviour
 {
+    [SerializeField]
     public GameController gameController;
     // Fox States:
     // Buried - underground, not moving
     // PoppingUp - in the process of popping out of the ground, in motion
     // Resting - above ground, not moving
     private enum State { Buried, PoppingUp, Resting }
-
     private State currentState = State.Buried;
     // fox pop up radius between player, 10000 = ultimate, fox will pop up all the time.
     [SerializeField]
@@ -37,13 +37,9 @@ public class FoxBehaviour : MonoBehaviour
     private float maximumViewAngleToPopUp = 30;
     // if fox been collected.
     public bool collected = false;
-
     private float timer = 0;
-
     private float distanceToPlayer = 100;
-
     private bool isFoxPopUp = false;
-
     public bool isTrueFox = true;
 
     private void Awake()
@@ -112,7 +108,7 @@ public class FoxBehaviour : MonoBehaviour
         float angle = Vector3.Angle(foxToPlayer, transform.forward);
         transform.rotation = Quaternion.Euler(0, angle, 0);
     }
-
+    
     private void OnTriggerEnter()
     {
         OnCollected();

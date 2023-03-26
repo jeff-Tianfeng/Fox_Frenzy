@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 4355298655438926109}
   - component: {fileID: 5076038131845999572}
   - component: {fileID: 1793397386371482424}
-  - component: {fileID: 4342523868041366632}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -209,19 +208,3 @@ MonoBehaviour:
   foxHandler: {fileID: 0}
   gameController: {fileID: 0}
   foxSoundController: {fileID: 0}
---- !u!111 &4342523868041366632
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7176664255988361252}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b359d9a15108117499763292dd82314d, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b359d9a15108117499763292dd82314d, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0

@@ -33,7 +33,6 @@ public class FoxHandler : MonoBehaviour
     [SerializeField]
     public FakeFoxGenerator fakeFoxGenerator;
     //Three Fox Gameobject, including two fake fox (with no sound).
-    [SerializeField]
     private int lifeTime = 8;
     private GameObject foxInstance;
     private GameObject foxInstanceFake1;
@@ -41,11 +40,11 @@ public class FoxHandler : MonoBehaviour
     //Fox spawn point range.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
-
+    // List to store fox generate points.
     private List<Coords> coords= new List<Coords>();
-    private List<Coords>  playerTest = new List<Coords>();
+    // default fox generate seed.
+    private List<Coords> playerTest = new List<Coords>();
     private int foxGenerateCounter = 0;
-
     private string tempStr;
     //Blocker to prevent multi call.
     private bool coordBlocker = false;
@@ -93,6 +92,9 @@ public class FoxHandler : MonoBehaviour
     {
         fakeFoxGenerator.GenerateObjectFake();
     }
+    /// <summary>
+    /// Use a random seed to disrupt original list.
+    /// </summary>
     private void fakeRandom()
     {
         for(int i = 0; i < 5; i++)
@@ -106,7 +108,6 @@ public class FoxHandler : MonoBehaviour
             }
         }
     }
-
     /// <summary>
     /// Generates a new instance of the collectable object in a random location.
     /// Destroys any existing instances of the collectable object.
@@ -117,24 +118,22 @@ public class FoxHandler : MonoBehaviour
         {
             Destroy(foxInstance);
         }
-
+        // get the spawn area attributes.
         Transform spawnAreaTransform = spawnArea.transform;
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
-
+        // generate new constructor instance.
         Coords temp = playerTest[foxGenerateCounter];
         coords.Add(temp);
-
+        // instantiate the fox object.
         foxInstance = Instantiate(collectable, new Vector3(temp.x, -0.2f, temp.y), Quaternion.identity);
-
         foxInstance.GetComponent<FoxBehaviour>().gameController = gameController;
         foxInstance.GetComponent<DataCollector>().gameController = gameController;
-
+        // assign values to the constructor.
         xIndex = temp.x;
         zIndex = temp.y;
 
         fakeFoxGenerator.GenerateObjectFake();
-
         foxGenerateCounter++;
         if(foxGenerateCounter == 15)
         {
@@ -144,7 +143,7 @@ public class FoxHandler : MonoBehaviour
 
     }
     /// <summary>
-    /// Rearrange the item in List
+    /// Use a random seed to disrupt original list.
     /// </summary>
     public List<T> Outoforder<T>(List<T> bag)
     {
@@ -174,9 +173,6 @@ public class FoxHandler : MonoBehaviour
         );
     }
 
-    /// <summary>
-    /// Get the fox gameObject.
-    /// </summary>
     public GameObject GetFox()
     {
         return foxInstance;
@@ -191,6 +187,7 @@ public class FoxHandler : MonoBehaviour
     {
         return zIndex;
     }
+    
     public float getDeviation()
     {
         float deviation = foxBehaviour.getAngle(); 

@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuCollector : MonoBehaviour
-{
+{   [SerializeField]
     public DataCollector dataCollector;
+    [SerializeField]
+    public InputField name;
+    [SerializeField]
+    public InputField age;
     private string player = "";
     private string playerAge;
-    public InputField name;
-    public InputField age;
 
     public void LoadGameScene(){
         player = name.text;
         playerAge = age.text;
         SceneManager.LoadScene(1);
         dataCollector.record();
+    }
+
+    public void Exit()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 
     public string returnName(){

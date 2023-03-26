@@ -60,13 +60,14 @@ public class DataCollector : MonoBehaviour
     }
     void Update()
     {   
-        //this part is for collecting data into two lists.
+        //this part is for collecting data into two lists, the if statement is for when multi object using one datacollector to avoid congestion.
         if(gameController != null && foxBehaviour != null)
-        {
+        {   
             if(Time.frameCount % countInterval == 0)
             {
                 if(gameController.GetSearchTime() == foxCollectCount)
                 {
+                    // collect data each 50 frames.
                     dataDistance[collectTime1] = foxBehaviour.getDistance();
                     dataAngle[collectTime2] = foxBehaviour.getAngle();
                 }else
@@ -82,7 +83,6 @@ public class DataCollector : MonoBehaviour
             collectAngleDeviation();
         }
     }
-
     /// <summary>
     /// collect total times of deviation over 30 degrees.
     /// </summary>
@@ -110,9 +110,9 @@ public class DataCollector : MonoBehaviour
         FileStream fs;
 
         if(type == 1){
-            fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Create);//the file storing path can be changed in here.
+            fs = new FileStream(Application.dataPath + "/" + PlayerPrefs.GetString("NickName") + "Distance.txt", FileMode.Create);//the file storing path can be changed in here.
         }else{
-            fs = new FileStream(Application.dataPath + "/Angle.txt", FileMode.Create);//the file storing path can be changed in here.
+            fs = new FileStream(Application.dataPath + "/" + PlayerPrefs.GetString("NickName") + "Deviation.txt", FileMode.Create);//the file storing path can be changed in here.
         }
         byte[] bytes = new UTF8Encoding().GetBytes(sb.ToString());
         fs.Write(bytes, 0, bytes.Length);
@@ -136,7 +136,7 @@ public class DataCollector : MonoBehaviour
         if(blockSignal == 5){
             Save(dataDistance,1);
             Save(dataAngle,2);
-
+            // assign values to the JSON class.
             playerPerformance.NickName = PlayerPrefs.GetString("NickName");
             playerPerformance.Age = PlayerPrefs.GetString("Age");
             playerPerformance.dataDistanceJS = dataDistance;
@@ -144,7 +144,6 @@ public class DataCollector : MonoBehaviour
             playerPerformance.foxCollectCountJS = foxCollectCount;
             playerPerformance.Score = PlayerPrefs.GetInt("Score");
             playerPerformance.Coords = PlayerPrefs.GetString("Coords");
-
 
             JsonPath = Application.streamingAssetsPath + "/" + playerPerformance.NickName + "JsonTest.json";
 
@@ -164,7 +163,9 @@ public class DataCollector : MonoBehaviour
     {
         return deviateTime;
     }
-
+    /// <summary>
+    /// Using PlayerPrefs to temporarily.
+    /// </summary>
     public void record(){
         if(mainMenuController != null)
         {
@@ -172,7 +173,9 @@ public class DataCollector : MonoBehaviour
             PlayerPrefs.SetString("Age", mainMenuController.retrunAge());
         }
     }
-
+    /// <summary>
+    /// Insert the fox points arrangement information into the list.
+    /// </summary>
     public void insertPointInfo(string list)
     {
         PlayerPrefs.SetString("Coords",list);

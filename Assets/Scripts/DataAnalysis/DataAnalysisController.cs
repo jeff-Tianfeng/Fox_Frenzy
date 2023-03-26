@@ -17,10 +17,12 @@ public class DataAnalysisController : MonoBehaviour
         deviationTimeText.SetText("Total deviate times: " + DataCollector.getDeviationTime().ToString());
         Cursor.lockState = CursorLockMode.Confined;
     }
-    
+    /// <summary>
+    /// Start the python scripy to show the player's performance.
+    /// </summary>
     public void Button_Click()
         {
-            Process.Start("/Users/zhaotianfeng/Desktop/fox/KL2CSoundNew/DataAnalysisTool/dist/main");
+            //Process.Start("/Users/zhaotianfeng/Desktop/fox/KL2CSoundNew/DataAnalysisTool/dist/main");
         }
 
 }

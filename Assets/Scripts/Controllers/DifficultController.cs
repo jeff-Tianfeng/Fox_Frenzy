@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class DifficultController : MonoBehaviour
 {
+    [SerializeField]
     public FakeFoxGenerator fakeFoxGenerator;
+    [SerializeField]
     public FoxHandler foxHandler;
+    [SerializeField]
     public GameController gameController;
+    [SerializeField]
     public FoxSoundController foxSoundController;
+    // List to store deviations dynamically.
     private List<float> deviations = new List<float>();
+    // take one count each 50 frames.
     private int countInterval = 50;
     private int collectCount = 0;
     private float avgDeviation = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -27,6 +27,7 @@ public class DifficultController : MonoBehaviour
             collectCount++;
             collectDeviation();
             avgDeviation = calculateAvgDeviation();
+            // based on the performance, choose difficulty level.
             if(avgDeviation <= 30)
             {
                 MediumMode();
@@ -37,16 +38,17 @@ public class DifficultController : MonoBehaviour
                 EasyMode();
             }
         }
-
-        
-
     }
-
+    /// <summary>
+    /// Append deviations value to the list.
+    /// </summary>
     private void collectDeviation()
     {
         deviations.Add(gameController.GetPlayerAngleToFox());
     }
-
+    /// <summary>
+    /// Calculate the average deviation.
+    /// </summary>
     private float calculateAvgDeviation()
     {
         float temp = 0;
@@ -63,11 +65,13 @@ public class DifficultController : MonoBehaviour
         foxSoundController.setSoundDeviation(3);
         fakeFoxGenerator.setDifficult(false);
     }
+
     private void MediumMode()
     {
         foxSoundController.setSoundDeviation(5);
         fakeFoxGenerator.setDifficult(true);
     }
+    
     private void HardMode()
     {
         foxSoundController.setSoundDeviation(7);

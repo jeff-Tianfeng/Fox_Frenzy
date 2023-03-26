@@ -16,8 +16,6 @@ public class FakeFoxGenerator : MonoBehaviour
     private GameController gameController;
     [SerializeField]
     public FoxHandler foxHandler;
-    [SerializeField]
-    private int lifeTime = 8;
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
@@ -26,30 +24,24 @@ public class FakeFoxGenerator : MonoBehaviour
     private GameObject foxInstanceFake2;
     // If the game is difficult level.
     private bool isDifficultLevel = false;
-
+    // two fake fox's positions.
     private Vector3 fox1Position = new Vector3(100,0,0);
     private Vector3 fox2Position = new Vector3(100,0,0);
     private float Fox1ToPlayer = 100;
     private float Fox2ToPlayer = 100;
-    private int FakeFoxCollectTime = 0;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {   
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        // get the player position
         Vector3 playerPos = gameController.GetPlayerPosition();
         Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
         Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
-        if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
-        {
-            collectFakeFox();
-        }
+        // is player distance is close to the fake fox, then call collectFakeFox function.
+        // if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
+        // {
+        //     collectFakeFox();
+        // }
     }
     /// <summary>
     /// Function to generate fake fox.
@@ -64,6 +56,7 @@ public class FakeFoxGenerator : MonoBehaviour
         {
             Destroy(foxInstanceFake2);
         }
+        // get the spawn area's attributes.
         Transform spawnAreaTransform = spawnArea.transform;
         Vector3 spawnAreaPosition = spawnAreaTransform.position;
         Vector3 spawnAreaSize = spawnAreaTransform.GetComponent<Renderer>().bounds.size;
@@ -80,6 +73,7 @@ public class FakeFoxGenerator : MonoBehaviour
                 break;
             }
         }
+        // instantiate the fox.
         fox1Position =  new Vector3(xCoordinate[xIndex], 0.1f, zCoordinate[zIndex]);
         foxInstanceFake1 = Instantiate(collectable, fox1Position, Quaternion.identity);
         // if is difficult level, add another fake fox.
@@ -100,26 +94,12 @@ public class FakeFoxGenerator : MonoBehaviour
             foxInstanceFake2 = Instantiate(collectable, fox2Position, Quaternion.identity);
         }
     }
-
+    /// <summary>
+    /// Set the game difficulty level.
+    /// </summary>
     public void setDifficult(bool level)
     {
         isDifficultLevel = level;
-    }
-    private void collectFakeFox()
-    {
-        FakeFoxCollectTime++;
-        gameController.FakeFoxCollected();
-        Title.Instance.Show(
-            "You found a fake fox",
-            "It's bell is not ringing, try again",
-            50,
-            lifeTime: lifeTime
-        );
-    }
-
-    public int getFakeFoxCollectTime()
-    {
-        return FakeFoxCollectTime;
     }
 
 }
