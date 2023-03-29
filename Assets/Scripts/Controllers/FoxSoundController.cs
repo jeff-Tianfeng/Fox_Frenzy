@@ -24,8 +24,10 @@ public class FoxSoundController : MonoBehaviour
     private static int soundPlayTimes = 0;//param for cacukating score get intotal.
 
     private void Start(){
-        Vector3 foxPosition = foxHandler.GetFox().transform.position;//get the fox position
-        PlayCorrespondSound(1, foxPosition);//play the corresponding sounds
+        if(foxHandler != null){
+            Vector3 foxPosition = foxHandler.GetFox().transform.position;//get the fox position
+            PlayCorrespondSound(1, foxPosition);//play the corresponding sounds
+        }
     }
 
     // Update is called once per frame

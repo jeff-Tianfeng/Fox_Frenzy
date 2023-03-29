@@ -44,7 +44,9 @@ public class DifficultController : MonoBehaviour
     /// </summary>
     private void collectDeviation()
     {
-        deviations.Add(gameController.GetPlayerAngleToFox());
+        if(gameController != null){
+            deviations.Add(gameController.GetPlayerAngleToFox());
+        }
     }
     /// <summary>
     /// Calculate the average deviation.
@@ -62,19 +64,28 @@ public class DifficultController : MonoBehaviour
 
     private void EasyMode()
     {
-        foxSoundController.setSoundDeviation(3);
-        fakeFoxGenerator.setDifficult(false);
+        if(fakeFoxGenerator != null)
+        {
+            foxSoundController.setSoundDeviation(3);
+            fakeFoxGenerator.setDifficult(false);
+        }
     }
 
     private void MediumMode()
     {
-        foxSoundController.setSoundDeviation(5);
-        fakeFoxGenerator.setDifficult(true);
+        if(fakeFoxGenerator != null)
+        {
+            foxSoundController.setSoundDeviation(5);
+            fakeFoxGenerator.setDifficult(true);
+        }
     }
     
     private void HardMode()
     {
-        foxSoundController.setSoundDeviation(7);
-        fakeFoxGenerator.setDifficult(true);
+        if(fakeFoxGenerator != null)
+        {
+            foxSoundController.setSoundDeviation(7);
+            fakeFoxGenerator.setDifficult(true);
+        }
     }
 }

@@ -15,7 +15,6 @@ public class FakeFoxBehaviour : MonoBehaviour
     private void Start()
     {
         //start logging
-        gameController.StartNewSearch();
     }
 
     private void OnTriggerEnter()

@@ -24,7 +24,7 @@ public class ScreenDrag : MonoBehaviour
 
     private float vertical;
     // player move speed.
-    private float moveSpeed = 10f;
+    private float moveSpeed = 30f;
     // drag force of friction.
     private float rigidbodyDrag = 4f;
  

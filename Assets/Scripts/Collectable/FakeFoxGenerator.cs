@@ -16,6 +16,8 @@ public class FakeFoxGenerator : MonoBehaviour
     private GameController gameController;
     [SerializeField]
     public FoxHandler foxHandler;
+    [SerializeField]
+    private int lifeTime = 4;
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};
@@ -38,10 +40,10 @@ public class FakeFoxGenerator : MonoBehaviour
         Fox1ToPlayer = Vector3.Distance(playerPos, fox1Position);
         Fox2ToPlayer = Vector3.Distance(playerPos, fox2Position);
         // is player distance is close to the fake fox, then call collectFakeFox function.
-        // if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
-        // {
-        //     collectFakeFox();
-        // }
+        if(Fox1ToPlayer < 1.8 || Fox2ToPlayer < 1.8)
+        {
+            collectFakeFox();
+        }
     }
     /// <summary>
     /// Function to generate fake fox.
@@ -101,5 +103,17 @@ public class FakeFoxGenerator : MonoBehaviour
     {
         isDifficultLevel = level;
     }
+
+    private void collectFakeFox()
+    {
+        gameController.FakeFoxCollected();
+        Title.Instance.Show(
+            "You found a fake fox",
+            "It's bell is not ringing, try again",
+            50,
+            lifeTime: lifeTime
+        );
+    }
+
 
 }
