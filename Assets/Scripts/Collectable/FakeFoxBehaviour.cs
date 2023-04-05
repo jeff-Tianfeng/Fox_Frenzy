@@ -6,7 +6,7 @@ using UnityEngine;
 public class FakeFoxBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameController gameController;
+    public GameController gameController;
     [SerializeField]
     private int lifeTime = 2;
 
@@ -19,6 +19,7 @@ public class FakeFoxBehaviour : MonoBehaviour
 
     private void OnTriggerEnter()
     {
+        gameController.FakeFoxCollected();
         collectFakeFox();
     }
     /// <summary>

@@ -92,6 +92,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void StartNewSearch()
     {
+        Debug.Log("DAHUSHISABI");
         logger.StartNewSearch();
     }
 

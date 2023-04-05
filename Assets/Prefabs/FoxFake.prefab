@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8932948125108588690}
   - component: {fileID: 1899907456955780091}
   - component: {fileID: 8117723226303232011}
+  - component: {fileID: 7109595035042761870}
   m_Layer: 0
   m_Name: FoxFake
   m_TagString: Untagged
@@ -100,3 +101,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0063736765, y: 0.019999856, z: 0.039154943}
   m_Center: {x: 0, y: 0.009969114, z: -0.0027167276}
+--- !u!114 &7109595035042761870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232291438263330378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c503cb7fb6c9f4494c41cae26e7d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 310088376689720680, guid: 4b900c8c8586ef14aa6a91a62e6b3a12, type: 3}
+  lifeTime: 2
