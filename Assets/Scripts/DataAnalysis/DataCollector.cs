@@ -32,6 +32,7 @@ public class DataCollector : MonoBehaviour
     public GameController gameController;
     [SerializeField]
     public ScoreController scoreController;
+    // 50 frames per count.
     [SerializeField]
     private int countInterval = 50;
 

@@ -38,7 +38,6 @@ public class SoundController : MonoBehaviour
                 isReachSummit = true;//start to go left.
             }
         }
-        //Debug.Log(soundSpatial);
         music.panStereo = soundSpatial;
     }
 

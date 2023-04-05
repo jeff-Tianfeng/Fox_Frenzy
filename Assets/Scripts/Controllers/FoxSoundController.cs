@@ -17,11 +17,14 @@ public class FoxSoundController : MonoBehaviour
     private FoxHandler foxHandler;
     [SerializeField]
     private ScoreController scoreController;
-
+    // control if the sound is allowed to be played.
     private bool isActivate = false;
+    // Timer to control the deviation of sound play.
     private float timer = 0;
-    private float delayTime = 3;//the interval between two bell ring.
-    private static int soundPlayTimes = 0;//param for cacukating score get intotal.
+    //the interval between two bell ring.
+    private float delayTime = 3;
+    //param for cacukating score get intotal.
+    private static int soundPlayTimes = 0;
 
     private void Start(){
         if(foxHandler != null){
@@ -36,7 +39,7 @@ public class FoxSoundController : MonoBehaviour
         if(isActivate)
         {
             RingAtFoxPosition();
-            //checkIfOverTime();
+            checkIfOverTime();
         }
     }
 
@@ -68,7 +71,9 @@ public class FoxSoundController : MonoBehaviour
             timer = 0;
         }
     }
-
+    /// <summary>
+    /// If the sound played over 4 times, then go punish.
+    /// </summary>
     private void checkIfOverTime(){
         if((soundPlayTimes % 4) == 0){
             scoreController.Punishment();

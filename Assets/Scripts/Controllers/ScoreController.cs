@@ -9,7 +9,9 @@ public class ScoreController : MonoBehaviour
     /// The score currently obtained by the player
     /// </summary>
     private static int score = 0;
+
     private int scoreNotStatic = 0;
+
     private int defaultScore = 10;
 
     private void Start()
@@ -19,7 +21,7 @@ public class ScoreController : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds 1 the players score and restarts the countdown.
+    /// Adds the players score and restarts the countdown.
     /// </summary>
     public void AddScore()
     {   
@@ -34,20 +36,22 @@ public class ScoreController : MonoBehaviour
         go.transform.SetParent(GameObject.Find("ScoreArea").transform);
         scoreNotStatic = score;
     }
+    
+        public int returnScore()
+    {
+        return scoreNotStatic;
+    }
+    /// <summary>
+    /// Minus 2 scores per punishment.
+    /// </summary>
+    public void Punishment(){
+        defaultScore -= 2;
+        Debug.Log("PUNISHED");
+    }
 
     public static int GetScore()
     {
         return score;
-    }
-
-    public int returnScore()
-    {
-        return scoreNotStatic;
-    }
-
-    public void Punishment(){
-        defaultScore -= 2;
-        Debug.Log("PUNISHED");
     }
 
 }

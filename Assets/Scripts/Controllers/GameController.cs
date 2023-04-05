@@ -7,37 +7,28 @@ using UnityEngine;
 /// </summary>
 public class GameController : MonoBehaviour
 {
-
-    private float minAngle = 120f;
-
     [SerializeField]
     private Logger logger;
-
     [SerializeField]
     private ScoreController scoreController;
-
     [SerializeField]
     private FoxHandler foxHandler;
-
     [SerializeField]
     private GameObject player;
-    
+
+    private float minAngle = 120f;
     private PlayerMovement playerMovement;
-
     public static int searchTime = 0;
-
     /// <summary>
     /// The duration of the countdown timer, in seconds.
     /// </summary>
     [SerializeField]
     private int countdownDuration = 180;
-
     /// <summary>
     /// If this angle to fox is exceeded, the player is reset to the start
     /// </summary>
     [SerializeField]
     private int foxAngleToReset = 60;
-
     /// <summary>
     /// The amount of time remaining on the countdown.
     /// </summary>
@@ -46,7 +37,7 @@ public class GameController : MonoBehaviour
     private bool isFoxHidden = true;
 
     private AudioSource audioSource;
-
+    // Blocker to avoid congestion.
     private bool MsgBlocker = false;
 
     private void Awake()
@@ -60,7 +51,9 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(Countdown());
     }
-
+    /// <summary>
+    /// Due to the change of game requirement, these state judgement functions has been abolished.
+    /// </summary>
     private void Update()
     {
         //MonitorPlayer();

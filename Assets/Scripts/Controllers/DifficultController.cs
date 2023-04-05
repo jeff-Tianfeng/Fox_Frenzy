@@ -16,10 +16,11 @@ public class DifficultController : MonoBehaviour
     private List<float> deviations = new List<float>();
     // take one count each 50 frames.
     private int countInterval = 50;
+    // how many times that collect the fox.
     private int collectCount = 0;
+    // Average deviation between player and fox.
     private float avgDeviation = 0;
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(Time.frameCount % countInterval == 0)

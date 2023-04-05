@@ -17,7 +17,7 @@ public class FakeFoxGenerator : MonoBehaviour
     [SerializeField]
     public FoxHandler foxHandler;
     [SerializeField]
-    private int lifeTime = 4;
+    private int lifeTime = 2;
     // Predefined fox points.
     private int[] xCoordinate = {-28, -14, 0, 14, 28};
     private int[] zCoordinate = {-28, 0, 28};

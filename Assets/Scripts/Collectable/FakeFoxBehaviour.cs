@@ -8,7 +8,7 @@ public class FakeFoxBehaviour : MonoBehaviour
     [SerializeField]
     private GameController gameController;
     [SerializeField]
-    private int lifeTime = 4;
+    private int lifeTime = 2;
 
     private int FakeFoxCollectTime = 0;
 
