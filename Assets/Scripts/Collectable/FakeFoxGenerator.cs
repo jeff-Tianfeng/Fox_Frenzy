@@ -36,6 +36,7 @@ public class FakeFoxGenerator : MonoBehaviour
 
     void Start()
     {
+        // assign foxbehaviour class.
         fakeFoxBehaviour = collectable.GetComponent<FakeFoxBehaviour>();
     }
     // Update is called once per frame

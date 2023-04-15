@@ -33,7 +33,7 @@ public class InstructionsMenu : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(1);
     }
 
     /// <summary>

@@ -20,7 +20,7 @@ public class HeadPhonePrompt : MonoBehaviour
 
     public void GoToNextScene()
     {
-        SceneManager.LoadSceneAsync(NextSceneName);
+        SceneManager.LoadSceneAsync(2);
     }
 
     public void PlaySoundAgain()
