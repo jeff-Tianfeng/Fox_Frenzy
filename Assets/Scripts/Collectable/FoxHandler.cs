@@ -162,7 +162,9 @@ public class FoxHandler : MonoBehaviour
         }
         return bag;
     }
-
+    /// <summary>
+    /// If collected true fox, show a title to player.
+    /// </summary>
     public void collectTrueFox()
     {
         Title.Instance.Show(
