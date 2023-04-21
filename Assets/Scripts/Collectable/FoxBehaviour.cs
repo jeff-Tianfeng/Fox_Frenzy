@@ -112,6 +112,7 @@ public class FoxBehaviour : MonoBehaviour
     private void OnTriggerEnter()
     {
         OnCollected();
+        Debug.Log("DAHUSHISHABI");
     }
 
     /// <summary>

@@ -15,8 +15,6 @@ public class FoxSoundController : MonoBehaviour
     public AudioClip audioClip4;
     [SerializeField]
     private FoxHandler foxHandler;
-    [SerializeField]
-    private ScoreController scoreController;
     // control if the sound is allowed to be played.
     private bool isActivate = false;
     // Timer to control the deviation of sound play.
@@ -39,7 +37,6 @@ public class FoxSoundController : MonoBehaviour
         if(isActivate)
         {
             RingAtFoxPosition();
-            checkIfOverTime();
         }
     }
 
@@ -69,14 +66,6 @@ public class FoxSoundController : MonoBehaviour
             Vector3 foxPosition = foxHandler.GetFox().transform.position;//get the fox position
             PlayCorrespondSound(random, foxPosition);//play the corresponding sounds
             timer = 0;
-        }
-    }
-    /// <summary>
-    /// If the sound played over 4 times, then go punish.
-    /// </summary>
-    private void checkIfOverTime(){
-        if((soundPlayTimes % 4) == 0){
-            scoreController.Punishment();
         }
     }
     /// <summary>
