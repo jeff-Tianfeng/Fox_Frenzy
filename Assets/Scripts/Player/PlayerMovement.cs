@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //player movement
+//         // player movement
 //         verticalMovement = Input.GetAxisRaw("Vertical");
 //         moveDirection = transform.forward * verticalMovement;
 
@@ -58,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
 // #if UNITY_EDITOR
 //         //enable full mouse controls when in the editor, for ease of testing
-//         lookX += Input.GetAxisRaw("Look X Debug");
-//         lookY += Input.GetAxisRaw("Look Y Debug");
+//         // lookX += Input.GetAxisRaw("Look X Debug");
+//         // lookY += Input.GetAxisRaw("Look Y Debug");
 // #endif
 
 
