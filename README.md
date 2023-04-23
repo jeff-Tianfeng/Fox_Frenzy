@@ -10,13 +10,15 @@ This project aims to develop a more child-friendly way to treat or detect childr
 
 #
 
-this project involves a game and a data analysis tool, which analysis the performance of player. The data analysis tool is in folder DataAnalysisTool, and two playable versions for mac and windows are separately in folder Game.app and GameForWindows.
+this project involves a game and a data analysis tool, which analysis the performance of player. This project is working with another project named Bee_In_The_FieldThe, and this game is for precision of spatial hearing.
+
+Data analysis tool is in folder DataAnalysisTool, and two playable versions for mac and windows are separately in folder Game.app and GameForWindows.
 
 ## How to run the game.
 
 #
 
-The playable games are in folder Game.app and GameForWindows, if want to modify the game in Unity engine, the version of Unity is: 2020.3.32f1, please make sure using the same version of editor.
+The playable games are in folder GameForWindows, if want to modify the game in Unity engine, the version of Unity is: 2020.3.32f1, please make sure using the same version of editor.
 
 ## Play instructions.
 
@@ -46,15 +48,21 @@ What's next, clicking on the Continue button, the game begins!!!!
 
 ![Image text3](Resources/Game.png)
 
-### Play environment.
+## Play environment.
+
+#
 
 This game is designed for touch screen, all test works are done on DELL P2418HT, the move instructs all finger gestrues, using one finger to drag to move the view angle, then using two fingers to touch the screen to move forward.
 
-### Materials used.
+## Materials used.
+
+# 
 
 Dynamic Grass FX [Link](https://assetstore.unity.com/packages/vfx/shaders/directx-11/dynamic-grass-fx-144740)  
 Free Low Poly Pack [Link](https://assetstore.unity.com/packages/3d/free-low-poly-pack-65375)
 
-### Bee_In_The_Field
+## Bee_In_The_Field
+
+#
 
 You can find another game Bee_In_The_Field in here [Bee](https://github.com/jeff-Tianfeng/Bee-In-The-Field) Which is another spatial hearing testing tool.
