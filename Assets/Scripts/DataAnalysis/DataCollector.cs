@@ -111,9 +111,9 @@ public class DataCollector : MonoBehaviour
         FileStream fs;
 
         if(type == 1){
-            fs = new FileStream(Application.dataPath + "/TextFileStorage/" + PlayerPrefs.GetString("NickName") + "Distance.txt", FileMode.Create);//the file storing path can be changed in here.
+            fs = new FileStream(Application.streamingAssetsPath + "/TextData/" + PlayerPrefs.GetString("NickName") + "Distance.txt", FileMode.Create);//the file storing path can be changed in here.
         }else{
-            fs = new FileStream(Application.dataPath + "/TextFileStorage/" + PlayerPrefs.GetString("NickName") + "Deviation.txt", FileMode.Create);//the file storing path can be changed in here.
+            fs = new FileStream(Application.streamingAssetsPath + "/TextData/" + PlayerPrefs.GetString("NickName") + "Deviation.txt", FileMode.Create);//the file storing path can be changed in here.
         }
         byte[] bytes = new UTF8Encoding().GetBytes(sb.ToString());
         fs.Write(bytes, 0, bytes.Length);
@@ -134,7 +134,7 @@ public class DataCollector : MonoBehaviour
                 blockSignal = -1;
             }
     
-        if(blockSignal == 175){
+        if(blockSignal == 5){
             Save(dataDistance,1);
             Save(dataAngle,2);
             // assign values to the JSON class.
@@ -165,7 +165,7 @@ public class DataCollector : MonoBehaviour
         return deviateTime;
     }
     /// <summary>
-    /// Using PlayerPrefs to temporarily.
+    /// Using PlayerPrefs to temporarily store the data.
     /// </summary>
     public void record(){
         if(mainMenuController != null)

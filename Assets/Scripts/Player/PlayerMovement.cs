@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = basePosition;
         xRotation = baseRotation.x;
         yRotation = baseRotation.y;
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 
     /// <summary>

@@ -16,6 +16,8 @@ The playable games are in folder Game.app and GameForWindows, if want to modify 
 
 Player have to listen and allocate the exact position the sound came from and move toward to the fox that estimated true, there are fake foxes to distract the player's judgement, if find a fake fox, the player will be punished.
 
+![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+
 ### Play environment.
 
 This game is designed for touch screen, all test works are done on DELL P2418HT, the move instructs all finger gestrues, using one finger to drag to move the view angle, then using two fingers to touch the screen to move forward.

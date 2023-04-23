@@ -1218,7 +1218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8387425747184338356, guid: 4edd3478c47b5f8479e90136a69d5a8f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 299
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 8387425747184338356, guid: 4edd3478c47b5f8479e90136a69d5a8f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2956,9 +2956,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352955826}
-  - component: {fileID: 352955825}
   - component: {fileID: 352955827}
   - component: {fileID: 352955828}
+  - component: {fileID: 352955825}
   - component: {fileID: 352955829}
   - component: {fileID: 352955830}
   m_Layer: 0
@@ -2986,7 +2986,6 @@ MonoBehaviour:
   dataCollector: {fileID: 352955828}
   foxBehaviour: {fileID: 0}
   fakeFoxGenerator: {fileID: 352955829}
-  lifeTime: 8
 --- !u!4 &352955826
 Transform:
   m_ObjectHideFlags: 0
@@ -3049,6 +3048,7 @@ MonoBehaviour:
   gameController: {fileID: 1440126904}
   foxHandler: {fileID: 352955825}
   lifeTime: 8
+  fakeFoxBehaviour: {fileID: 0}
 --- !u!114 &352955830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12809,7 +12809,6 @@ MonoBehaviour:
   audioClip3: {fileID: 8300000, guid: 316fa06dbdb8741d3b397da54aafb3f2, type: 3}
   audioClip4: {fileID: 8300000, guid: 05afcc61290e84e6e9e3a81307f01e16, type: 3}
   foxHandler: {fileID: 352955825}
-  scoreController: {fileID: 233504907}
 --- !u!1 &1858942463
 GameObject:
   m_ObjectHideFlags: 0
