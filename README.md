@@ -1,22 +1,50 @@
-## Fox_Frenzy Spatial hearing test and measurement game.
+# Fox_Frenzy Spatial hearing test and measurement game.
 
-### Background.
+## Background.
+
+#
 
 This project aims to develop a more child-friendly way to treat or detect children's eye diseases including strabismus and squints.
 
-### Project details.
+## Project details.
+
+#
 
 this project involves a game and a data analysis tool, which analysis the performance of player. The data analysis tool is in folder DataAnalysisTool, and two playable versions for mac and windows are separately in folder Game.app and GameForWindows.
 
-### How to run the game.
+## How to run the game.
+
+#
 
 The playable games are in folder Game.app and GameForWindows, if want to modify the game in Unity engine, the version of Unity is: 2020.3.32f1, please make sure using the same version of editor.
 
-### Play instructions.
+## Play instructions.
+
+#
 
 Player have to listen and allocate the exact position the sound came from and move toward to the fox that estimated true, there are fake foxes to distract the player's judgement, if find a fake fox, the player will be punished.
 
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+## Game Preview
+
+#
+
+When first open the game, there will be an instruction about the game background and how to play the game:
+
+![Image text1](Resources/Instruction.png)
+
+![Image text2](Resources/Operation.png)
+
+Then clicking the Play button, a sound test scene will appear to allow player cheack if their headphone works, and if they wear the headphone in correct manner:
+
+![Image text3](Resources/SoundTest.png)
+
+Then Clicking on the Continue button, the start menu will appear to allow player input their name and age, also the empty input is not allowed, if input empty, a prompt word will appear to allow the player input again
+
+![Image text3](Resources/StartScene.png)
+
+What's next, clicking on the Continue button, the game begins!!!!
+
+![Image text3](Resources/Game.png)
 
 ### Play environment.
 
